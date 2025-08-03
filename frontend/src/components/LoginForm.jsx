@@ -1,27 +1,36 @@
 import { Formik, Form, Field } from 'formik';
 import { useState } from 'react';
+import routes from '../api/routes';
+import axios from 'axios'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const LoginForm = () => {
     const [authFailed, setAuthFailed] = useState(false)
-    const formik = useFormik({
-      initialValues: {
+    const navigate = useNavigate()
+    const location = useLocation()
+    const isFrom = location.state?.from?.pathname || '/'
+
+    const initialValues = {
         username: "",
         password: "",
-      },
-      onSubmit: async (values) => {
+    }
+
+    const onSubmit = async (values) => {
         const { username, password } = values
         try {
-          
+          const res = await axios.post(routes.loginPath(), { username, password })
+          localStorage.setItem('token', res.data.token)
+          setAuthFailed(false)
+          navigate(isFrom)
         }
         catch(e) {
           console.log(e)
           setAuthFailed(true)
         }
-      },
-  });
+    }
 
     return (
-        <Formik initialValues={formik.initialValues} onSubmit={formik.onSubmit}>
+        <Formik initialValues={initialValues} onSubmit={onSubmit}>
             {() => (
                 <Form className='col-12 col-md-6 mt-3 mt-md-0'>
                     <h1 className='text-center mb-4'>Войти</h1>
