@@ -11,3 +11,6 @@ develop:
 
 lint:
 	make -C frontend lint
+deploy:
+	make -C frontend build
+	npx start-server -s ./frontend/dist
