@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
             <a href="/" className="navbar-brand">Hexlet Chat</a>
             </div>
         </nav>
-        <main className="flex-grow-1">
+        <main className="flex-grow-1 d-flex justify-content-center align-items-center">
             {children}
         </main>
         </div>
