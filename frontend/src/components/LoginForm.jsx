@@ -3,12 +3,15 @@ import { useState } from 'react';
 import routes from '../api/routes';
 import axios from 'axios'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { logIn } from '../store/slices/authSlice';
+import { useDispatch } from 'react-redux'
 
 const LoginForm = () => {
     const [authFailed, setAuthFailed] = useState(false)
     const navigate = useNavigate()
     const location = useLocation()
     const isFrom = location.state?.from?.pathname || '/'
+    const dispatch = useDispatch()
 
     const initialValues = {
         username: "",
@@ -19,6 +22,7 @@ const LoginForm = () => {
         const { username, password } = values
         try {
           const res = await axios.post(routes.loginPath(), { username, password })
+          dispatch(logIn(res.data.token))
           localStorage.setItem('token', res.data.token)
           setAuthFailed(false)
           navigate(isFrom)
