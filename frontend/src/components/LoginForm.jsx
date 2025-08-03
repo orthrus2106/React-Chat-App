@@ -1,15 +1,27 @@
 import { Formik, Form, Field } from 'formik';
+import { useState } from 'react';
 
 const LoginForm = () => {
-    const initialValues = {
-        username: '',
-        password: '',
-    }
-    const handleSubmit = (values) => {
-        console.log(values)
-    }
+    const [authFailed, setAuthFailed] = useState(false)
+    const formik = useFormik({
+      initialValues: {
+        username: "",
+        password: "",
+      },
+      onSubmit: async (values) => {
+        const { username, password } = values
+        try {
+          
+        }
+        catch(e) {
+          console.log(e)
+          setAuthFailed(true)
+        }
+      },
+  });
+
     return (
-        <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+        <Formik initialValues={formik.initialValues} onSubmit={formik.onSubmit}>
             {() => (
                 <Form className='col-12 col-md-6 mt-3 mt-md-0'>
                     <h1 className='text-center mb-4'>Войти</h1>
@@ -30,6 +42,7 @@ const LoginForm = () => {
                             placeholder="Пароль"
                             />
                         <label htmlFor="password">Пароль</label>
+                        <div className={`invalid-feedback ${authFailed ? 'd-block' : ''}`}>the username or password is incorrect</div>
                     </div>
                     <button type="submit" className='w-100 mb-3 btn btn-outline-primary'>Войти</button>
                 </Form>
