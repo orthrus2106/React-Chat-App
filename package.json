@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "npx chat-server",
+    "start": "npx start-server -s ./frontend/dist -a 0.0.0.0",
     "build": "cd frontend && npm ci && npm run build",
     "postinstall": "cd frontend && npm ci"
   },
