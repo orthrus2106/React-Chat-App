@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "build": "npm run build --prefix frontend",
-    "start": "start-server -s ./frontend/dist",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx chat-server",
+    "build": "cd frontend && npm ci && npm run build",
     "postinstall": "cd frontend && npm ci"
   },
   "author": "",
