@@ -13,7 +13,7 @@ const ChannelBox = ({ channels, activeChannel, onSelectChannel }) => {
                                 <li className="nav-item w-100" key={channel.id}>
                                     <button onClick={() => onSelectChannel(channel.id)} 
                                     type="button" 
-                                    className={`w-100 rounded-0 text-start btn ${channel.id === activeChannel.id ? 'btn-secondary' : 'btn-light'}`}>
+                                    className={`w-100 rounded-0 text-start btn ${channel.id === activeChannel?.id ? 'btn-secondary' : 'btn-light'}`}>
                                         <span className="me-1">#</span>
                                         {channel.name}
                                     </button>
