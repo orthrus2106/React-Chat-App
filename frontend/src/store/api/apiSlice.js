@@ -13,15 +13,25 @@ const api = createApi({
             return headers
         })
     }),
+    tagTypes: ['Message'],
     endpoints: (builder) => ({
         getChannels: builder.query({
             query: () => routes.channelsPath(),
         }),
         getMessages: builder.query({
             query: () => routes.messagesPath(),
+            providesTags: ['Message']
+        }),
+        addMessage: builder.mutation({
+            query: (message) => ({
+                url: routes.messagesPath(),
+                method: 'POST',
+                body: message,
+            }),
+            invalidatesTags: ['Message']
         }),
     })
 })
 
-export const { useGetChannelsQuery, useGetMessagesQuery } = api
+export const { useGetChannelsQuery, useGetMessagesQuery, useAddMessageMutation } = api
 export default api
