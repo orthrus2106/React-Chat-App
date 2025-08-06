@@ -1,5 +1,5 @@
-const Message = () => {
-    return <div className="text-break mb-2"><b>admin</b>: asd</div>
+const Message = ({ author, body }) => {
+    return <div className="text-break mb-2"><b>{author}</b>: {body}</div>
 }
 
 export default Message

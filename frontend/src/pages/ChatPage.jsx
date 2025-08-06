@@ -27,7 +27,9 @@ const ChatPage = () => {
             dispatch(setCurrentChannel(channels[0].id))
         }
     }, [channels, currentChannelId, dispatch])
-    if (isLoading) return <Spinner />;
+
+    if (isLoading) return <Spinner animation="border" />
+
     return (
         <Layout>
             <div className="container h-100 my-4 overflow-hidden rounded shadow">
@@ -41,11 +43,16 @@ const ChatPage = () => {
                 <ChatHeader activeChannel={activeChannel} />
 
                 <div className="overflow-auto px-5 mb-3" style={{ flexGrow: 1 }}>
-                    <MessagesBox />
+                    <MessagesBox 
+                    messages={messages}
+                    activeChannel={activeChannel}
+                    />
                 </div>
 
                 <div className="px-5 py-3">
-                    <ChatForm />
+                    <ChatForm 
+                    activeChannel={activeChannel}
+                    />
                 </div>
                 </ChatLayout>
             </div>
