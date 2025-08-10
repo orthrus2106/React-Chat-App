@@ -1,7 +1,9 @@
 import { Formik, Form, Field } from 'formik';
 import { useAddMessageMutation } from "../store/api/apiSlice"
+import useActiveChannel from '../hooks/useActiveChannel';
 
-const ChatForm = ({ activeChannel }) => {
+const ChatForm = () => {
+    const { activeChannel } = useActiveChannel()
     const initialValues = { text: '' }
     const [addMessage] = useAddMessageMutation()
     const onSubmit = async (value, { resetForm }) => {
