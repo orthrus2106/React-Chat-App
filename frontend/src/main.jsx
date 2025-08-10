@@ -4,6 +4,9 @@ import App from './app/App.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import store from './store/index.js';
 import { Provider } from 'react-redux';
+import socketInit from './services/socketService.js';
+
+socketInit(store)
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
