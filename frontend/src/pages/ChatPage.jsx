@@ -40,7 +40,7 @@ const ChatPage = () => {
                 onSelectChannel={onSelectChannel}
                 />
                 <ChatLayout>
-                <ChatHeader activeChannel={activeChannel} />
+                <ChatHeader activeChannel={activeChannel} messages={messages}/>
 
                 <div className="overflow-auto px-5 mb-3" style={{ flexGrow: 1 }}>
                     <MessagesBox 
