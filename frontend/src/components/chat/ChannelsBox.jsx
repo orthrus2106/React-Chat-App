@@ -1,4 +1,4 @@
-import useActiveChannel from "../hooks/useActiveChannel"
+import useActiveChannel from "../../hooks/useActiveChannel"
 
 const ChannelBox = () => {
     const { channels, activeChannel, onSelectChannel } = useActiveChannel()

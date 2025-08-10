@@ -1,9 +1,9 @@
-import ChatLayout from "../components/ChatLayout";
-import ChatForm from "../components/ChatForm";
-import MessagesBox from "../components/MessagesBox";
-import ChatHeader from "../components/ChatHeader";
-import ChannelBox from "../components/ChannelsBox";
-import Layout from "../components/Layout"
+import ChatLayout from "../components/chat/ChatLayout";
+import ChatForm from "../components/chat/ChatForm";
+import MessagesBox from "../components/chat/MessagesBox";
+import ChatHeader from "../components/chat/ChatHeader";
+import ChannelBox from "../components/chat/ChannelsBox";
+import Layout from "../components/page/Layout"
 
 const ChatPage = () => {
     return (

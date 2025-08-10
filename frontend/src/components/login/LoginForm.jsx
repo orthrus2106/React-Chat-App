@@ -1,9 +1,9 @@
 import { Formik, Form, Field } from 'formik';
 import { useState } from 'react';
-import routes from '../api/routes';
+import routes from '../../api/routes';
 import axios from 'axios'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { logIn } from '../store/slices/authSlice';
+import { logIn } from '../../store/slices/authSlice';
 import { useDispatch } from 'react-redux'
 
 const LoginForm = () => {

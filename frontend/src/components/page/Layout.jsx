@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { selectIsAuthed } from "../store/slices/authSlice"
+import { selectIsAuthed } from "../../store/slices/authSlice"
 import LogoutBtn from "./LogoutBtn"
 
 const Layout = ({ children }) => {

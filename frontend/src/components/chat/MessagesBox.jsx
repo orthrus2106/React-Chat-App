@@ -1,6 +1,6 @@
 import Message from "./Message"
-import useActiveChannel from "../hooks/useActiveChannel"
-import { useGetMessagesQuery } from "../store/api/apiSlice"
+import useActiveChannel from "../../hooks/useActiveChannel"
+import { useGetMessagesQuery } from "../../store/api/apiSlice"
 
 const MessagesBox = () => {
     const { activeChannel } = useActiveChannel()

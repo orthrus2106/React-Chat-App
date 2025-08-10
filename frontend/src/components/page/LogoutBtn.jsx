@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { logOut } from "../store/slices/authSlice"
+import { logOut } from "../../store/slices/authSlice"
 import { useNavigate } from "react-router-dom"
 
 const LogoutBtn = () => {

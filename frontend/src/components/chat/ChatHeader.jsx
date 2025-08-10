@@ -1,5 +1,5 @@
-import useActiveChannel from "../hooks/useActiveChannel"
-import { useGetMessagesQuery } from "../store/api/apiSlice"
+import useActiveChannel from "../../hooks/useActiveChannel"
+import { useGetMessagesQuery } from "../../store/api/apiSlice"
 
 const ChatHeader = () => {
     const { data: messages = [] } = useGetMessagesQuery()
