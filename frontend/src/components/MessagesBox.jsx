@@ -1,6 +1,10 @@
 import Message from "./Message"
+import useActiveChannel from "../hooks/useActiveChannel"
+import { useGetMessagesQuery } from "../store/api/apiSlice"
 
-const MessagesBox = ({ messages, activeChannel }) => {
+const MessagesBox = () => {
+    const { activeChannel } = useActiveChannel()
+    const { data: messages = []} = useGetMessagesQuery() 
     const filteredMessages = messages?.filter((message) => message.channelId === activeChannel?.id)
     console.log(filteredMessages)
     return (
