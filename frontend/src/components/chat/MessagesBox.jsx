@@ -6,7 +6,6 @@ const MessagesBox = () => {
     const { activeChannel } = useActiveChannel()
     const { data: messages = []} = useGetMessagesQuery() 
     const filteredMessages = messages?.filter((message) => message.channelId === activeChannel?.id)
-    console.log(filteredMessages)
     return (
         <div className="chat-messages overflow-auto px-5" id="messages-box">
             {filteredMessages?.map((message) => (
