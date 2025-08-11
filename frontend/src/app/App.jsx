@@ -3,6 +3,7 @@ import LoginPage from "../pages/LoginPage"
 import NotFoundPage from "../pages/NotFoundPage"
 import ChatPage from '../pages/ChatPage';
 import AuthRequired from '../components/page/AuthRequired';
+import ModalRoot from '../components/modals/ModalRoot';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="*" element={<NotFoundPage />} /> 
       </Routes>
+      <ModalRoot />
     </Router>
   )
 }
