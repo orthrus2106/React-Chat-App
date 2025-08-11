@@ -23,7 +23,7 @@ const api = createApi({
             query: (name) => ({
                 url: routes.channelsPath(),
                 method: 'POST',
-                body: { name: name.trim() },
+                body: { name },
             }),
             invalidatesTags: ['Channel'],
         }),
