@@ -13,10 +13,19 @@ const api = createApi({
             return headers
         })
     }),
-    tagTypes: ['Message'],
+    tagTypes: ['Message', 'Channel'],
     endpoints: (builder) => ({
         getChannels: builder.query({
             query: () => routes.channelsPath(),
+            providesTags: ['Channel'],
+        }),
+        addChannel: builder.mutation({
+            query: (name) => ({
+                url: routes.channelsPath(),
+                method: 'POST',
+                body: { name: name.trim() },
+            }),
+            invalidatesTags: ['Channel'],
         }),
         getMessages: builder.query({
             query: () => routes.messagesPath(),
