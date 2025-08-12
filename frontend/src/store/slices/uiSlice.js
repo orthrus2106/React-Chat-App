@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import api from "../api/apiSlice";
 
 const initialState = {
     currentChannelId: null,
@@ -22,6 +23,11 @@ const uiSlice = createSlice({
             state.modal.modalType = null
             state.modal.channelId = null
         }
+    },
+    extraReducers: (builder) => {
+        builder.addMatcher(api.endpoints.addChannel.matchFulfilled, (state, { payload }) => {
+            state.currentChannelId = payload.id;
+        })
     }
 })
 
