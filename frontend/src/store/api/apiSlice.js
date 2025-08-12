@@ -27,6 +27,13 @@ const api = createApi({
             }),
             invalidatesTags: ['Channel'],
         }),
+        renameChannel: builder.mutation({
+            query: (channel) => ({
+                url: `${routes.channelsPath()}/${channel.id}`,
+                method: 'PATCH',
+                body: { name: channel.name },
+            }),
+        }),
         getMessages: builder.query({
             query: () => routes.messagesPath(),
             providesTags: ['Message']
