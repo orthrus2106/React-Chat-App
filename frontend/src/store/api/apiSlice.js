@@ -49,5 +49,5 @@ const api = createApi({
     })
 })
 
-export const { useGetChannelsQuery, useGetMessagesQuery, useAddMessageMutation, useAddChannelMutation } = api
+export const { useGetChannelsQuery, useGetMessagesQuery, useAddMessageMutation, useAddChannelMutation, useRenameChannelMutation } = api
 export default api
