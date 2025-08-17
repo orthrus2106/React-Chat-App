@@ -1,17 +1,20 @@
 import { Formik, Form, Field } from 'formik';
 import { useAddMessageMutation } from "../../store/api/apiSlice"
 import useActiveChannel from '../../hooks/useActiveChannel';
+import { selectUsername } from '../../store/slices/authSlice';
+import { useSelector } from 'react-redux';
 
 const ChatForm = () => {
     const { activeChannel } = useActiveChannel()
     const initialValues = { text: '' }
     const [addMessage] = useAddMessageMutation()
+    const currentUserName = useSelector(selectUsername)
     const onSubmit = async (value, { resetForm }) => {
         try {
             await addMessage({
                 body: value.text,
                 channelId: activeChannel?.id,
-                username: 'admin'
+                username: currentUserName,
             })
             resetForm()
         }
