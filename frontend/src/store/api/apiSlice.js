@@ -27,6 +27,12 @@ const api = createApi({
             }),
             invalidatesTags: ['Channel'],
         }),
+        removeChannel: builder.mutation({
+            query: (channel) => ({
+                url: `${routes.channelsPath()}/${channel.id}`,
+                method: 'DELETE',
+            })
+        }),
         renameChannel: builder.mutation({
             query: (channel) => ({
                 url: `${routes.channelsPath()}/${channel.id}`,
