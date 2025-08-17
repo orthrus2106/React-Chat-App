@@ -54,8 +54,15 @@ const api = createApi({
             }),
             invalidatesTags: ['Message']
         }),
+        addUser: builder.mutation({
+            query: (user) => ({
+                url: routes.createNewUserPath(),
+                method: 'POST',
+                body: user,
+            }),
+        }),
     })
 })
 
-export const { useGetChannelsQuery, useGetMessagesQuery, useAddMessageMutation, useAddChannelMutation, useRenameChannelMutation, useRemoveChannelMutation } = api
+export const { useGetChannelsQuery, useGetMessagesQuery, useAddMessageMutation, useAddChannelMutation, useRenameChannelMutation, useRemoveChannelMutation, useAddUserMutation } = api
 export default api
