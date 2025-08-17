@@ -9,6 +9,18 @@ const socketInit = (store) => {
             newMessages.push(payload)
         }))
     })
+
+    socket.on('newChannel', (payload) => {
+        store.dispatch(api.util.updateQueryData('getChannels', undefined, (newChannels) => {
+            newChannels.push(payload)
+        }))
+    });
+    socket.on('removeChannel', (payload) => {
+        store.dispatch(api.util.updateQueryData('getChannels', undefined, (newChannels) => {
+            const filteredChannels = newChannels.filter((channel) => channel.id !== payload.id)
+            return filteredChannels
+        }))
+    });
 }
 
 export default socketInit
