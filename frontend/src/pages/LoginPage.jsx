@@ -1,6 +1,7 @@
 import LoginForm from '../components/login/LoginForm';
 import loginImage from '../assets/login-image.jpg';
 import Layout from '../components/page/Layout';
+import { Link } from 'react-router-dom';
 
 const LoginPage = () => {
   return (
@@ -24,7 +25,7 @@ const LoginPage = () => {
               <div className="card-footer p-4">
                 <div className="text-center">
                   <span>Нет аккаунта? </span>
-                  <a href="/signup">Регистрация</a>
+                  <Link to="/signup">Регистрация</Link>
                 </div>
               </div>
             </div>
