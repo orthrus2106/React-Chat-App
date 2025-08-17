@@ -43,8 +43,9 @@ const SignUpForm = () => {
                     password: value.password,
                 }).unwrap()
                 console.log(res)
-                dispatch(logIn(res.token))
+                dispatch(logIn({ token: res.token, username: res.username }))
                 localStorage.setItem('token', res.token)
+                localStorage.setItem('username', res.username)
                 navigate('/')
             }
             catch(e) {

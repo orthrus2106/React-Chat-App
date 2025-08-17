@@ -7,7 +7,6 @@ const LogoutBtn = () => {
     const navigate = useNavigate()
     const handleLogOut = () => {
         dispatch(logOut())
-        localStorage.removeItem('token')
         navigate('/login')
     }
     return <button className="btn btn-primary" onClick={handleLogOut}>Выйти</button>

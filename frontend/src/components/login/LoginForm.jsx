@@ -22,8 +22,9 @@ const LoginForm = () => {
         const { username, password } = values
         try {
           const res = await axios.post(routes.loginPath(), { username, password })
-          dispatch(logIn(res.data.token))
+          dispatch(logIn({ token: res.data.token, username: res.data.username }))
           localStorage.setItem('token', res.data.token)
+          localStorage.setItem('username', res.data.username)
           setAuthFailed(false)
           navigate(isFrom)
         }
