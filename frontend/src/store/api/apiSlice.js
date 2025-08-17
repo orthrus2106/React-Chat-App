@@ -33,6 +33,7 @@ const api = createApi({
                 method: 'PATCH',
                 body: { name: channel.name },
             }),
+            invalidatesTags: ['Channel']
         }),
         getMessages: builder.query({
             query: () => routes.messagesPath(),
