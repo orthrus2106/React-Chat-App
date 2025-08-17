@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { openModal, closeModal } from "../../store/slices/uiSlice"
 import AddChannelModal from "./AddChannelModal"
 import RenameChannelModal from "./RenameChannelModal"
+import RemoveChannelModal from "./RemoveChannelModal"
 
 const ModalRoot = () => {
     const modal = useSelector((state) => state.ui.modal)
@@ -15,6 +16,9 @@ const ModalRoot = () => {
     }
     if (modal.modalType === 'rename') {
         return <RenameChannelModal onHide={onHide}/>
+    }
+    if (modal.modalType === 'remove') {
+        return <RemoveChannelModal onHide={onHide} />
     }
 }
 

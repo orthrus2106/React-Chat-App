@@ -28,6 +28,9 @@ const uiSlice = createSlice({
         builder.addMatcher(api.endpoints.addChannel.matchFulfilled, (state, { payload }) => {
             state.currentChannelId = payload.id;
         })
+        .addMatcher(api.endpoints.removeChannel.matchFulfilled, (state) => {
+            state.currentChannelId = null
+        })
     }
 })
 

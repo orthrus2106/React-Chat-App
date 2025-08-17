@@ -1,6 +1,6 @@
 import { ButtonGroup, Dropdown, Button } from 'react-bootstrap';
 
-const ChannelItem = ({ channel, isActive, onSelect, onRename }) => {
+const ChannelItem = ({ channel, isActive, onSelect, onRename, onRemove }) => {
     return (
         <Dropdown as={ButtonGroup} className='w-100'>
             <Button
@@ -19,7 +19,7 @@ const ChannelItem = ({ channel, isActive, onSelect, onRename }) => {
                     <Dropdown.Menu>
                         <Dropdown.Item onClick={onRename}>Переименовать</Dropdown.Item>
                          <Dropdown.Divider />
-                         <Dropdown.Item>Удалить</Dropdown.Item>
+                         <Dropdown.Item onClick={onRemove}>Удалить</Dropdown.Item>
                     </Dropdown.Menu>
                 </>
             )}
