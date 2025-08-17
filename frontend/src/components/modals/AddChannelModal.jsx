@@ -11,7 +11,7 @@ const AddChannelModal = ({ onHide }) => {
     const inputRef = useRef()
     const { channels } = useActiveChannel()
     const usedNames = channels.map((channel) => channel.name.trim().toLowerCase())
-    const [addChannel, { isLoading, isError, error }] = useAddChannelMutation()
+    const [addChannel, { isLoading }] = useAddChannelMutation()
     const schema = yup.object().shape({
         name: yup
             .string()
@@ -67,7 +67,7 @@ const AddChannelModal = ({ onHide }) => {
                     isInvalid={!!formik.errors.name}
                     isValid={!formik.errors.name && formik.touched.name}
                     ref={inputRef}
-                    />
+                />
                     <Form.Control.Feedback type="invalid">
                         {formik.errors.name}
                     </Form.Control.Feedback>
