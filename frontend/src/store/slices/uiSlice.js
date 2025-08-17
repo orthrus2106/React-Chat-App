@@ -33,4 +33,5 @@ const uiSlice = createSlice({
 
 export const { setCurrentChannel, openModal, closeModal } = uiSlice.actions
 export const selectCurrentChannelId = (state) => state.ui.currentChannelId
+export const selectModal = (state) => state.ui.modal
 export default uiSlice.reducer
