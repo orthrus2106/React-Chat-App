@@ -14,7 +14,7 @@ const init = async () => {
     .use(initReactI18next)
     .init({
       resources,
-      fallbackLng: 'ru',
+      lng: 'ru',
     })
     
     socketInit(store)
