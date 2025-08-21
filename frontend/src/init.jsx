@@ -6,6 +6,7 @@ import { I18nextProvider, initReactI18next } from 'react-i18next'
 import resources from './locales'
 import store from './store/index.js'
 import { Provider } from 'react-redux'
+import { ToastContainer } from 'react-toastify'
 
 const init = async () => {
     const i18n = i18next.createInstance()
@@ -22,6 +23,17 @@ const init = async () => {
         <Provider store={store}>
             <I18nextProvider i18n={i18n}>
                 <App />
+                <ToastContainer 
+                position="bottom-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick={false}
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable={false}
+                    pauseOnHover={false}
+                />
             </I18nextProvider>
         </Provider>
     )
