@@ -2,8 +2,10 @@ import LoginForm from '../components/login/LoginForm';
 import loginImage from '../assets/login-image.jpg';
 import Layout from '../components/page/Layout';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const LoginPage = () => {
+  const { t } = useTranslation()
   return (
     <Layout>
       <div className="container-fluid h-100">
@@ -24,8 +26,8 @@ const LoginPage = () => {
               </div>
               <div className="card-footer p-4">
                 <div className="text-center">
-                  <span>Нет аккаунта? </span>
-                  <Link to="/signup">Регистрация</Link>
+                  <span>{t('ui.noAccount')} </span>
+                  <Link to="/signup">{t('buttons.register')}</Link>
                 </div>
               </div>
             </div>

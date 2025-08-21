@@ -1,6 +1,8 @@
 import { ButtonGroup, Dropdown, Button } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 const ChannelItem = ({ channel, isActive, onSelect, onRename, onRemove }) => {
+    const { t } = useTranslation()
     return (
         <Dropdown as={ButtonGroup} className='w-100'>
             <Button
@@ -17,9 +19,9 @@ const ChannelItem = ({ channel, isActive, onSelect, onRename, onRemove }) => {
                 <>
                     <Dropdown.Toggle split variant={isActive ? 'secondary' : 'light'}/>
                     <Dropdown.Menu>
-                        <Dropdown.Item onClick={onRename}>Переименовать</Dropdown.Item>
+                        <Dropdown.Item onClick={onRename}>{t('buttons.rename')}</Dropdown.Item>
                          <Dropdown.Divider />
-                         <Dropdown.Item onClick={onRemove}>Удалить</Dropdown.Item>
+                         <Dropdown.Item onClick={onRemove}>{t('buttons.remove')}</Dropdown.Item>
                     </Dropdown.Menu>
                 </>
             )}

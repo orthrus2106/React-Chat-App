@@ -8,8 +8,10 @@ import { useRenameChannelMutation } from "../../store/api/apiSlice";
 import useActiveChannel from "../../hooks/useActiveChannel";
 import { useSelector } from "react-redux";
 import { selectModal } from "../../store/slices/uiSlice";
+import { useTranslation } from 'react-i18next';
 
 const RenameChannelModal = ({ onHide }) => {
+    const { t } = useTranslation()
     const inputRef = useRef()
     const { channels } = useActiveChannel()
     const modal = useSelector(selectModal)
@@ -20,10 +22,10 @@ const RenameChannelModal = ({ onHide }) => {
         name: yup
             .string()
             .trim()
-            .min(3, 'Минимум 3 символа')
-            .max(20, 'Максимум 20 символов')
-            .notOneOf(usedNames, 'Канал уже существует')
-            .required('Обязательное поле')
+            .min(3, t('errors.minimumLength'))
+            .max(20, t('errors.maximumLength'))
+            .notOneOf(usedNames, t('errors.channelExists'))
+            .required(t('errors.required'))
     });
     const formik = useFormik({
         initialValues: {
@@ -53,7 +55,7 @@ const RenameChannelModal = ({ onHide }) => {
         <Modal show onHide={onHide}>
             <Form onSubmit={formik.handleSubmit}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Переименовать канал</Modal.Title>
+                    <Modal.Title>{t('modals.renameChannel')}</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
@@ -65,7 +67,7 @@ const RenameChannelModal = ({ onHide }) => {
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             disabled={formik.isSubmitting || isLoading}
-                            placeholder="например, random"
+                            placeholder={t('modals.sampleChannelName')}
                             isInvalid={!!formik.errors.name}
                             isValid={!formik.errors.name && formik.touched.name}
                             ref={inputRef}
@@ -77,10 +79,10 @@ const RenameChannelModal = ({ onHide }) => {
                 </Modal.Body>
                 <Modal.Footer>
                         <Button variant="secondary" onClick={onHide} disabled={formik.isSubmitting || isLoading}>
-                        Закрыть
+                        {t('buttons.cancel')}
                         </Button>
                         <Button type="submit" variant="primary" disabled={formik.isSubmitting |isLoading || !!formik.errors.name}>
-                        Отправить
+                        {t('buttons.send')}
                         </Button>
                 </Modal.Footer>
             </Form>

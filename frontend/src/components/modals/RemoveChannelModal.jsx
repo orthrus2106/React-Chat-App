@@ -4,8 +4,10 @@ import { selectModal } from "../../store/slices/uiSlice"
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useSelector } from "react-redux";
+import { useTranslation } from 'react-i18next';
 
 const RemoveChannelModal = ({ onHide }) => {
+    const { t } = useTranslation()
     const modal = useSelector(selectModal)
     const channelId = modal.channelId
     const [removeChannel, { isLoading }] = useRemoveChannelMutation()
@@ -24,18 +26,18 @@ const RemoveChannelModal = ({ onHide }) => {
     return (
         <Modal show onHide={onHide} backdrop={isLoading ? "static" : true}>
             <Modal.Header closeButton>
-                <Modal.Title>Удалить канал</Modal.Title>
+                <Modal.Title>{t('modals.removeChannel')}</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
-                <h2 className="h6">Уверены?</h2>
+                <h2 className="h6">{t('modals.areYouSure')}</h2>
            <div className="d-flex justify-content-end">
              <Button 
-            className="me-2" variant="danger" type="button" onClick={handleRemove} disabled={isLoading}>Удалить
+            className="me-2" variant="danger" type="button" onClick={handleRemove} disabled={isLoading}>{t('buttons.remove')}
             </Button>
             <Button
             variant="outline-secondary" type="button" onClick={onHide} disabled={isLoading}>
-            Закрыть
+            {t('buttons.cancel')}
             </Button>
            </div>
             </Modal.Body>

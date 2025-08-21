@@ -6,28 +6,30 @@ import { useAddUserMutation } from "../../store/api/apiSlice";
 import { useNavigate } from "react-router-dom";
 import { logIn } from "../../store/slices/authSlice";
 import { useDispatch } from "react-redux";
+import { useTranslation } from 'react-i18next';
 
 const SignUpForm = () => {
+    const { t } = useTranslation()
     const [addUser, { isLoading }] = useAddUserMutation()
     const navigate = useNavigate();
     const dispatch = useDispatch()
     const schema = yup.object().shape({
         username: yup
             .string()
-            .min(3, 'Минимум 3 символа')
-            .max(20, 'Максимум 20 символов')
-            .required('Обязательное поле'),
+            .min(3, t('errors.minimumLength'))
+            .max(20, t('errors.maximumLength'))
+            .required(t('errors.required')),
             
         password: yup
             .string()
             .trim()
-            .min(6, 'Минимум 6 символов')
-            .required('Обязательное поле'),
+            .min(6, t('errors.minimumLength'))
+            .required(t('errors.required')),
             
         confirmPassword: yup
             .string()
-            .oneOf([yup.ref('password'), null], 'Пароли должны совпадать')
-            .required('Обязательное поле'),
+            .oneOf([yup.ref('password'), null], t('errors.passwordMismatch'))
+            .required(t('errors.required')),
     });
     const formik = useFormik({
         initialValues: {
@@ -49,7 +51,7 @@ const SignUpForm = () => {
             }
             catch(e) {
                 if (e?.status === 409) {
-                    formik.setStatus('Пользователь уже существует')
+                    formik.setStatus(t('errors.userExist'))
                 } else {
                     console.log(e)
                 }
@@ -59,14 +61,14 @@ const SignUpForm = () => {
 
     return (
         <Form onSubmit={formik.handleSubmit}>
-            <h1 className="text-center mb-4">Регистрация</h1>
+            <h1 className="text-center mb-4">{t('buttons.register')}</h1>
 
             <Form.Group className="mb-3" controlId="username">
-                <Form.Label visuallyHidden>Имя пользователя</Form.Label>
+                <Form.Label visuallyHidden>{t('auth.username')}</Form.Label>
                 <Form.Control
                     type="text"
                     name="username"
-                    placeholder="Имя пользователя"
+                    placeholder={t('auth.username')}
                     size="md"
                     autoFocus
                     required
@@ -82,11 +84,11 @@ const SignUpForm = () => {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="password">
-                <Form.Label visuallyHidden>Пароль</Form.Label>
+                <Form.Label visuallyHidden>{t('auth.password')}</Form.Label>
                 <Form.Control
                     type="password"
                     name="password"
-                    placeholder="Пароль"
+                    placeholder={t('auth.password')}
                     size="md"
                     required
                     onChange={formik.handleChange}
@@ -101,11 +103,11 @@ const SignUpForm = () => {
             </Form.Group>
 
             <Form.Group className="mb-4" controlId="confirmPassword">
-                <Form.Label visuallyHidden>Подтвердите пароль</Form.Label>
+                <Form.Label visuallyHidden>{t('auth.confirmPassword')}</Form.Label>
                 <Form.Control
                     type="password"
                     name="confirmPassword"
-                    placeholder="Подтвердите пароль"
+                    placeholder={t('auth.confirmPassword')}
                     size="md"
                     required
                     onChange={formik.handleChange}
@@ -124,7 +126,7 @@ const SignUpForm = () => {
             )}
 
             <Button type="submit" variant="primary" className="w-100" size="md" disabled={formik.isSubmitting || isLoading}>
-                Зарегистрироваться
+                {t('buttons.register')}
             </Button>
         </Form>
     )

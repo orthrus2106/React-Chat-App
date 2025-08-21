@@ -5,8 +5,10 @@ import axios from 'axios'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { logIn } from '../../store/slices/authSlice';
 import { useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next';
 
 const LoginForm = () => {
+    const { t } = useTranslation()
     const [authFailed, setAuthFailed] = useState(false)
     const navigate = useNavigate()
     const location = useLocation()
@@ -38,27 +40,27 @@ const LoginForm = () => {
         <Formik initialValues={initialValues} onSubmit={onSubmit}>
             {() => (
                 <Form className='col-12 col-md-6 mt-3 mt-md-0'>
-                    <h1 className='text-center mb-4'>Войти</h1>
+                    <h1 className='text-center mb-4'>{t('buttons.login')}</h1>
                     <div className='form-floating mb-3'>
                         <Field
                             type="username"
                             name="username"
                             className="form-control"
-                            placeholder="Ваш ник"
+                            placeholder={t('auth.username')}
                             />
-                        <label htmlFor="username">Ваш ник</label>
+                        <label htmlFor="username">{t('auth.username')}</label>
                     </div>
                     <div className='form-floating mb-4'>
                         <Field
                             type="password"
                             name="password"
                             className="form-control"
-                            placeholder="Пароль"
+                            placeholder={t('auth.password')}
                             />
-                        <label htmlFor="password">Пароль</label>
-                        <div className={`invalid-feedback ${authFailed ? 'd-block' : ''}`}>the username or password is incorrect</div>
+                        <label htmlFor="password">{t('auth.password')}</label>
+                        <div className={`invalid-feedback ${authFailed ? 'd-block' : ''}`}>{t('errors.invalidCredentials')}</div>
                     </div>
-                    <button type="submit" className='w-100 mb-3 btn btn-outline-primary'>Войти</button>
+                    <button type="submit" className='w-100 mb-3 btn btn-outline-primary'>{t('buttons.login')}</button>
                 </Form>
             )}
         </Formik>

@@ -1,9 +1,10 @@
 import Layout from '../components/page/Layout';
 import signUpImage from '../assets/signup-image.jpg';
-import { Link } from 'react-router-dom';
 import SignUpForm from '../components/signup/SignUpForm';
+import { useTranslation } from 'react-i18next';
 
 const SignUpPage = () => {
+    const { t } = useTranslation()
     return (
         <Layout>
             <div className="container-fluid h-100">
@@ -15,7 +16,7 @@ const SignUpPage = () => {
                         <img
                             src={signUpImage}
                             className="rounded-circle"
-                            alt="Регистрация"
+                            alt={t('buttons.register')}
                         />
                         </div>
                         <div className="col-12 col-md-6 mt-3 mt-md-0">
