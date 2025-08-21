@@ -5,13 +5,15 @@ export default {
       channelExists: "Channel name already exists",
       addChannelFailed: "Channel was not added, please try again later",
       messageSendFailed: "Message was not sent, please try again later",
-      invalidCredentials: "Incorrect username or password",
+      invalidCredentials: "Invalid username or password",
       required: "Required field",
       usernameLength: "From 3 to 20 characters",
       minimumLength: "Minimum 3 characters",
       maximumLength: "Maximum 20 characters",
       passwordMin: "At least 6 characters",
       passwordMismatch: "Passwords must match",
+      channelCreateError: "Failed to create channel",
+      networkError: "Error loading data",
     },
 
     buttons: {
@@ -19,8 +21,8 @@ export default {
       remove: "Remove",
       cancel: "Cancel",
       rename: "Rename",
-      logout: "Log out",
-      login: "Log in",
+      logout: "Logout",
+      login: "Login",
       register: "Register",
     },
 
@@ -55,6 +57,12 @@ export default {
       messages: "messages",
       appName: "Hexlet Chat",
       noAccount: "No account?",
+    },
+
+    notifications: {
+      channelCreated: "Channel created",
+      channelRenamed: "Channel renamed",
+      channelRemoved: "Channel removed",
     },
   },
 };

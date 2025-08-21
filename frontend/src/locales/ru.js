@@ -12,6 +12,8 @@ export default {
       maximumLength: "Максимум 20 символов",
       passwordMin: "Не менее 6 символов",
       passwordMismatch: "Пароли должны совпадать",
+      channelCreateError: "Ошибка при создании канала",
+      networkError: "Ошибка при загрузке данных",
     },
 
     buttons: {
@@ -56,5 +58,11 @@ export default {
       appName: "Hexlet Chat",
       noAccount: "Нет аккаунта?",
     },
+
+    notifications: {
+      channelCreated: 'Канал создан',
+      channelRenamed: 'Канал переименован',
+      channelRemoved: 'Канал удалён',
+    }
   },
 };
