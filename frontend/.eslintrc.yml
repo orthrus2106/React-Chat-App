@@ -10,7 +10,6 @@ env:
 extends:
   - airbnb
   - plugin:react/recommended
-  - plugin:functional/recommended
   - plugin:react-hooks/recommended
 
 parserOptions:
@@ -21,7 +20,6 @@ parserOptions:
 
 plugins:
   - react
-  - functional
 
 rules:
   import/extensions: 0
