@@ -1,17 +1,11 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './app/App.jsx';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import store from './store/index.js';
-import { Provider } from 'react-redux';
-import socketInit from './services/socketService.js';
+import init from './init.jsx';
 
-socketInit(store)
-
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </StrictMode>,
-)
+init().then((vdom) => {
+  createRoot(document.getElementById('root')).render(
+    <StrictMode>
+      {vdom}
+    </StrictMode>
+  )
+})
