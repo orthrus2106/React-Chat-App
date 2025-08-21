@@ -1,10 +1,10 @@
-import { useState } from "react";
 import { useRemoveChannelMutation } from "../../store/api/apiSlice"
 import { selectModal } from "../../store/slices/uiSlice"
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useSelector } from "react-redux";
 import { useTranslation } from 'react-i18next';
+import { toast } from "react-toastify"
 
 const RemoveChannelModal = ({ onHide }) => {
     const { t } = useTranslation()
@@ -16,6 +16,7 @@ const RemoveChannelModal = ({ onHide }) => {
         try {
             console.log('channel id:', channelId)
             await removeChannel(channelId).unwrap()
+            toast.success(t('notifications.channelRemoved'))
             onHide()
         }
         catch(e) {

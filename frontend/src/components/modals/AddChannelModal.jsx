@@ -7,6 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { toast } from "react-toastify"
 
 const AddChannelModal = ({ onHide }) => {
     const { t } = useTranslation()
@@ -34,6 +35,7 @@ const AddChannelModal = ({ onHide }) => {
             try {
                 await addChannel(value.name).unwrap()
                 resetForm()
+                toast.success(t('notifications.channelCreated'));
                 onHide()
             }
             catch(e) {

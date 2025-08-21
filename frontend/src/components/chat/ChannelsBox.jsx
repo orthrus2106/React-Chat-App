@@ -3,10 +3,12 @@ import useActiveChannel from "../../hooks/useActiveChannel"
 import { openModal } from "../../store/slices/uiSlice"
 import ChannelItem from "./ChannelItem"
 import { useTranslation } from 'react-i18next';
+import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 const ChannelBox = () => {
     const { t } = useTranslation()
-    const { channels, activeChannel, onSelectChannel } = useActiveChannel()
+    const { channels, activeChannel, onSelectChannel, isError } = useActiveChannel()
     const dispatch = useDispatch()
 
     const handleOpenAddModal = () => {
@@ -20,6 +22,13 @@ const ChannelBox = () => {
     const handleOpenRemoveModal = (id) => {
         dispatch(openModal({ modalType: 'remove', channelId: id }))
     }
+
+    useEffect(() => {
+        if (isError) {
+            toast.error(t('errors.networkError'))
+            return null
+        }
+    }, [t, isError])
 
     return (
         <div className="col-4 col-md-2 border-end px-0 bg-light flex-column h-100 d-flex">

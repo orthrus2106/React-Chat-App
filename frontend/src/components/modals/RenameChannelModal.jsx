@@ -9,6 +9,7 @@ import useActiveChannel from "../../hooks/useActiveChannel";
 import { useSelector } from "react-redux";
 import { selectModal } from "../../store/slices/uiSlice";
 import { useTranslation } from 'react-i18next';
+import { toast } from "react-toastify"
 
 const RenameChannelModal = ({ onHide }) => {
     const { t } = useTranslation()
@@ -36,6 +37,7 @@ const RenameChannelModal = ({ onHide }) => {
             try {
                 await renameChannel({ id: channelId, name: value.name }).unwrap()
                 resetForm()
+                toast.success(t('notifications.channelRenamed'))
                 onHide()
             }
             catch(e) {
