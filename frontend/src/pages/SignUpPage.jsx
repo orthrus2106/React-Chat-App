@@ -16,7 +16,7 @@ const SignUpPage = () => {
                   <img
                     src={signUpImage}
                     className="rounded-circle"
-                    alt={t('buttons.register')}
+                    alt={t('ui.uiRegister')}
                   />
                 </div>
                 <div className="col-12 col-md-6 mt-3 mt-md-0">

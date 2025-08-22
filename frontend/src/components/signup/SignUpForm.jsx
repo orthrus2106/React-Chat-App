@@ -16,8 +16,8 @@ const SignUpForm = () => {
   const schema = yup.object().shape({
     username: yup
       .string()
-      .min(3, t('errors.minimumLength'))
-      .max(20, t('errors.maximumLength'))
+      .min(3, t('errors.usernameLength'))
+      .max(20, t('errors.usernameLength'))
       .required(t('errors.required')),
 
     password: yup
@@ -50,7 +50,7 @@ const SignUpForm = () => {
         navigate('/');
       } catch (e) {
         if (e?.status === 409) {
-          formik.setStatus(t('errors.userExist'));
+          formik.setStatus(t('errors.userExists'));
         } else {
           console.log(e);
         }

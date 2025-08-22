@@ -1,7 +1,7 @@
 export default {
   translation: {
     errors: {
-      userExists: 'Имя пользователя уже существует',
+      userExists: 'Такой пользователь уже существует',
       channelExists: 'Имя канала уже существует',
       addChannelFailed: 'Канал не был добавлен, попробуйте позже',
       messageSendFailed: 'Сообщение не было отправлено, попробуйте позже',
@@ -23,7 +23,7 @@ export default {
       rename: 'Переименовать',
       logout: 'Выйти',
       login: 'Войти',
-      register: 'Регистрация',
+      register: 'Зарегистрироваться',
     },
 
     navigation: {
@@ -57,6 +57,7 @@ export default {
       messages: 'сообщений',
       appName: 'Hexlet Chat',
       noAccount: 'Нет аккаунта?',
+      uiRegister: 'Регистрация',
       plus: '+',
     },
 
