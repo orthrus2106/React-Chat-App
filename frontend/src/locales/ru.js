@@ -23,7 +23,7 @@ export default {
       rename: 'Переименовать',
       logout: 'Выйти',
       login: 'Войти',
-      register: 'Зарегистрироваться',
+      register: 'Регистрация',
     },
 
     navigation: {
