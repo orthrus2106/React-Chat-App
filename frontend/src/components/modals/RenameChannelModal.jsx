@@ -24,8 +24,8 @@ const RenameChannelModal = ({ onHide }) => {
     name: yup
       .string()
       .trim()
-      .min(3, t('errors.minimumLength'))
-      .max(20, t('errors.maximumLength'))
+      .min(3, t('errors.usernameLength'))
+      .max(20, t('errors.usernameLength'))
       .notOneOf(usedNames, t('errors.channelExists'))
       .required(t('errors.required')),
   });

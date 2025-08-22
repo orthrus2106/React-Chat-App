@@ -20,8 +20,8 @@ const AddChannelModal = ({ onHide }) => {
     name: yup
       .string()
       .trim()
-      .min(3, t('errors.minimumChannelLength'))
-      .max(20, t('errors.maximumChannelLength'))
+      .min(3, t('errors.usernameLength'))
+      .max(20, t('errors.usernameLength'))
       .notOneOf(usedNames, t('errors.channelExists'))
       .required(t('errors.required')),
   });
