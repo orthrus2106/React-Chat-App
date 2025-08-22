@@ -23,7 +23,7 @@ const SignUpForm = () => {
     password: yup
       .string()
       .trim()
-      .min(6, t('errors.minimumLength'))
+      .min(6, t('errors.passwordMin'))
       .required(t('errors.required')),
 
     confirmPassword: yup
