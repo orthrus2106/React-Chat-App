@@ -46,6 +46,7 @@ const LoginForm = () => {
               name="username"
               className="form-control"
               placeholder={t('auth.username')}
+              onFocus={() => setAuthFailed(false)}
             />
             <label htmlFor="username">{t('auth.username')}</label>
           </div>
