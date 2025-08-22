@@ -30,8 +30,11 @@ const LoginForm = () => {
       setAuthFailed(false);
       navigate(isFrom);
     } catch (e) {
-      console.log(e);
-      setAuthFailed(true);
+      if (e.response?.status === 401) {
+          setAuthFailed(true);
+        } else {
+          throw e;
+        }
     }
   };
 
