@@ -10,7 +10,7 @@ export default {
       usernameLength: 'От 3 до 20 символов',
       minimumLength: 'Минимум 3 символа',
       maximumLength: 'Максимум 20 символов',
-      passwordMin: 'Минимум 6 символов',
+      passwordMin: 'Не менее 6 символов',
       passwordMismatch: 'Пароли должны совпадать',
       channelCreateError: 'Ошибка при создании канала',
       networkError: 'Ошибка соединения',
