@@ -37,7 +37,7 @@ const LoginForm = () => {
 
   return (
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
-      {() => (
+      {({ handleChange }) => (
         <Form className="col-12 col-md-6 mt-3 mt-md-0">
           <h1 className="text-center mb-4">{t('buttons.login')}</h1>
           <div className="form-floating mb-3">
@@ -46,7 +46,10 @@ const LoginForm = () => {
               name="username"
               className="form-control"
               placeholder={t('auth.username')}
-              onFocus={() => setAuthFailed(false)}
+              onChange={(e) => {
+                setAuthFailed(false);
+                handleChange(e);
+              }}
             />
             <label htmlFor="username">{t('auth.username')}</label>
           </div>
@@ -56,7 +59,10 @@ const LoginForm = () => {
               name="password"
               className="form-control"
               placeholder={t('auth.password')}
-              onFocus={() => setAuthFailed(false)}
+              onChange={(e) => {
+                setAuthFailed(false);
+                handleChange(e);
+              }}
             />
             <label htmlFor="password">{t('auth.password')}</label>
             <div className={`invalid-feedback ${authFailed ? 'd-block' : ''}`}>{t('errors.invalidCredentials')}</div>
