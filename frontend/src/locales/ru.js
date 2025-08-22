@@ -13,7 +13,7 @@ export default {
       passwordMin: "Не менее 6 символов",
       passwordMismatch: "Пароли должны совпадать",
       channelCreateError: "Ошибка при создании канала",
-      networkError: "Ошибка при загрузке данных",
+      networkError: "Ошибка соединения",
     },
 
     buttons: {
@@ -23,7 +23,7 @@ export default {
       rename: "Переименовать",
       logout: "Выйти",
       login: "Войти",
-      register: "Регистрация",
+      register: "Зарегистрироваться",
     },
 
     navigation: {
@@ -33,14 +33,14 @@ export default {
     },
 
     auth: {
-      username: "Имя пользователя",
+      username: "Ваш ник",
       password: "Пароль",
       confirmPassword: "Подтвердите пароль",
     },
 
     modals: {
       addChannel: "Добавить канал",
-      enterChannelName: "Введите название канала",
+      enterChannelName: "Имя канала",
       sampleChannelName: "Например, my team",
       removeChannel: "Удалить канал",
       areYouSure: "Уверены?",
@@ -57,12 +57,13 @@ export default {
       messages: "сообщений",
       appName: "Hexlet Chat",
       noAccount: "Нет аккаунта?",
+      plus: "+",
     },
 
     notifications: {
-      channelCreated: 'Канал создан',
-      channelRenamed: 'Канал переименован',
-      channelRemoved: 'Канал удалён',
+      channelCreated: "Канал создан",
+      channelRenamed: "Канал переименован",
+      channelRemoved: "Канал удалён",
     }
   },
 };
