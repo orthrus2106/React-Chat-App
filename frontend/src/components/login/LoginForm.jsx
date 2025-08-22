@@ -8,15 +8,16 @@ import { logIn } from '../../store/slices/authSlice';
 import routes from '../../api/routes';
 import { useEffect } from 'react';
 import { selectIsAuthed } from '../../store/slices/authSlice';
+import { selectAuthFailed, setAuthFailed } from '../../store/slices/uiSlice';
 
 const LoginForm = () => {
   const { t } = useTranslation();
-  const [authFailed, setAuthFailed] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const isFrom = location.state?.from?.pathname || '/';
   const dispatch = useDispatch();
-  const isAuthed = useSelector(selectIsAuthed)
+  const isAuthed = useSelector(selectIsAuthed);
+  const authFailed = useSelector(selectAuthFailed);
 
   const initialValues = {
     username: '',
@@ -30,12 +31,12 @@ const LoginForm = () => {
       await dispatch(logIn({ token: res.data.token, username: res.data.username }));
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('username', res.data.username);
-      setAuthFailed(false);
+      dispatch(setAuthFailed(false));
     } catch (e) {
       if (e.response?.status === 401) {
-          setAuthFailed(true);
+          dispatch(setAuthFailed(true));
         } else {
-          throw e;
+          console.log(e)
         }
     }
   };
@@ -58,7 +59,7 @@ const LoginForm = () => {
               className="form-control"
               placeholder={t('auth.username')}
               onChange={(e) => {
-                setAuthFailed(false);
+                dispatch(setAuthFailed(false));
                 handleChange(e);
               }}
             />
@@ -71,7 +72,7 @@ const LoginForm = () => {
               className="form-control"
               placeholder={t('auth.password')}
               onChange={(e) => {
-                setAuthFailed(false);
+                dispatch(setAuthFailed(false));
                 handleChange(e);
               }}
             />
