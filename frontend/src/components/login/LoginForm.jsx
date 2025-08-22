@@ -56,6 +56,7 @@ const LoginForm = () => {
               name="password"
               className="form-control"
               placeholder={t('auth.password')}
+              onFocus={() => setAuthFailed(false)}
             />
             <label htmlFor="password">{t('auth.password')}</label>
             <div className={`invalid-feedback ${authFailed ? 'd-block' : ''}`}>{t('errors.invalidCredentials')}</div>
