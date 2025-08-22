@@ -33,11 +33,8 @@ const LoginForm = () => {
       localStorage.setItem('username', res.data.username);
       dispatch(setAuthFailed(false));
     } catch (e) {
-      if (e.response?.status === 401) {
-          dispatch(setAuthFailed(true));
-        } else {
-          console.log(e)
-        }
+      dispatch(setAuthFailed(true));
+      console.log(e)
     }
   };
 
