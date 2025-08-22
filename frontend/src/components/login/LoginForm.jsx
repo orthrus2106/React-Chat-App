@@ -2,10 +2,12 @@ import { Formik, Form, Field } from 'formik';
 import { useState } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { logIn } from '../../store/slices/authSlice';
 import routes from '../../api/routes';
+import { useEffect } from 'react';
+import { selectIsAuthed } from '../../store/slices/authSlice';
 
 const LoginForm = () => {
   const { t } = useTranslation();
@@ -14,6 +16,7 @@ const LoginForm = () => {
   const location = useLocation();
   const isFrom = location.state?.from?.pathname || '/';
   const dispatch = useDispatch();
+  const isAuthed = useSelector(selectIsAuthed)
 
   const initialValues = {
     username: '',
@@ -24,11 +27,10 @@ const LoginForm = () => {
     const { username, password } = values;
     try {
       const res = await axios.post(routes.loginPath(), { username, password });
-      dispatch(logIn({ token: res.data.token, username: res.data.username }));
+      await dispatch(logIn({ token: res.data.token, username: res.data.username }));
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('username', res.data.username);
       setAuthFailed(false);
-      navigate(isFrom);
     } catch (e) {
       if (e.response?.status === 401) {
           setAuthFailed(true);
@@ -37,6 +39,12 @@ const LoginForm = () => {
         }
     }
   };
+
+  useEffect(() => {
+  if (isAuthed) {
+    navigate(isFrom);
+  }
+  }, [isAuthed, navigate, isFrom]);
 
   return (
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
