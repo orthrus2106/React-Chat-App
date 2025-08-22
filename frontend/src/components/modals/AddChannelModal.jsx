@@ -8,8 +8,10 @@ import Modal from 'react-bootstrap/Modal';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from "react-toastify"
+import leoProfanity from 'leo-profanity'
 
 const AddChannelModal = ({ onHide }) => {
+
     const { t } = useTranslation()
     const inputRef = useRef()
     const { channels } = useActiveChannel()
@@ -33,7 +35,7 @@ const AddChannelModal = ({ onHide }) => {
         validationSchema: schema,
         onSubmit: async (value, { resetForm, setSubmitting }) => {
             try {
-                await addChannel(value.name).unwrap()
+                await addChannel(leoProfanity.clean(value.name)).unwrap()
                 resetForm()
                 toast.success(t('notifications.channelCreated'));
                 onHide()

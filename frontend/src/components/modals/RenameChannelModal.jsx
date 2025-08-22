@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { selectModal } from "../../store/slices/uiSlice";
 import { useTranslation } from 'react-i18next';
 import { toast } from "react-toastify"
+import leoProfanity from 'leo-profanity'
 
 const RenameChannelModal = ({ onHide }) => {
     const { t } = useTranslation()
@@ -35,7 +36,7 @@ const RenameChannelModal = ({ onHide }) => {
         validationSchema: schema,
         onSubmit: async (value, { resetForm, setSubmitting }) => {
             try {
-                await renameChannel({ id: channelId, name: value.name }).unwrap()
+                await renameChannel({ id: channelId, name: leoProfanity.clean(value.name) }).unwrap()
                 resetForm()
                 toast.success(t('notifications.channelRenamed'))
                 onHide()

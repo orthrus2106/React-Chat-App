@@ -4,6 +4,7 @@ import useActiveChannel from '../../hooks/useActiveChannel';
 import { selectUsername } from '../../store/slices/authSlice';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import leoProfanity from 'leo-profanity';
 
 const ChatForm = () => {
     const { t } = useTranslation()
@@ -14,7 +15,7 @@ const ChatForm = () => {
     const onSubmit = async (value, { resetForm }) => {
         try {
             await addMessage({
-                body: value.text,
+                body: leoProfanity.clean(value.text),
                 channelId: activeChannel?.id,
                 username: currentUserName,
             })
