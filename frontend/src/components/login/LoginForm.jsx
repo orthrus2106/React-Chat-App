@@ -62,6 +62,7 @@ const LoginForm = () => {
                 dispatch(setAuthFailed(false));
                 handleChange(e);
               }}
+              required
             />
             <label htmlFor="username">{t('auth.username')}</label>
           </div>
@@ -75,6 +76,7 @@ const LoginForm = () => {
                 dispatch(setAuthFailed(false));
                 handleChange(e);
               }}
+              required
             />
             <label htmlFor="password">{t('auth.password')}</label>
             {authFailed && !isAuthed && !isSubmitting &&  (
