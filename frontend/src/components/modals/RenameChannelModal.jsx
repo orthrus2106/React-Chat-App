@@ -61,7 +61,7 @@ const RenameChannelModal = ({ onHide }) => {
 
         <Modal.Body>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="name" />
+            <Form.Label htmlFor="name">{t('modals.enterChannelName')}</Form.Label>
             <Form.Control
               id="name"
               name="name"
