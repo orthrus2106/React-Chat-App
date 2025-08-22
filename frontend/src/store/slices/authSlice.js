@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign, no-expression-statement */
-
 import { createSlice } from '@reduxjs/toolkit';
 
 const token = localStorage.getItem('token');

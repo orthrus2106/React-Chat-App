@@ -1,6 +1,11 @@
-const Message = ({ author, body }) => {
-    return <div className="text-break mb-2"><b>{author}</b>: {body}</div>
-}
+const Message = ({ author, body }) => (
+  <div className="text-break mb-2">
+    <b>{author}</b>
+    :
+    {' '}
+    {body}
+  </div>
+);
 
 // const Message = ({ author, body }) => {
 //   const currentUsername = localStorage.getItem('username')
@@ -15,4 +20,4 @@ const Message = ({ author, body }) => {
 //   )
 // }
 
-export default Message
+export default Message;
