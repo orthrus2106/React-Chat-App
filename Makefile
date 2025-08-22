@@ -1,11 +1,11 @@
 install:
-	make -C frontend install
+	npm install && make -C frontend install
 
 build:
 	make -C frontend build
 
 start:
-	make -C frontend start
+	npm start
 develop:
 	make -C frontend dev & make start
 
