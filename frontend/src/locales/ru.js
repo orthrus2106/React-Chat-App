@@ -32,8 +32,14 @@ export default {
       mainPage: 'на главную страницу',
     },
 
-    auth: {
+    register: {
       username: 'Имя пользователя',
+      password: 'Пароль',
+      confirmPassword: 'Подтвердите пароль',
+    },
+
+    auth: {
+      username: 'Ваш ник',
       password: 'Пароль',
       confirmPassword: 'Подтвердите пароль',
     },

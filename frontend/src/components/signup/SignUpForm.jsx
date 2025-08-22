@@ -63,11 +63,11 @@ const SignUpForm = () => {
       <h1 className="text-center mb-4">{t('buttons.register')}</h1>
 
       <Form.Group className="mb-3" controlId="username">
-        <Form.Label visuallyHidden>{t('auth.username')}</Form.Label>
+        <Form.Label visuallyHidden>{t('register.username')}</Form.Label>
         <Form.Control
           type="text"
           name="username"
-          placeholder={t('auth.username')}
+          placeholder={t('register.username')}
           size="md"
           autoFocus
           required
@@ -83,11 +83,11 @@ const SignUpForm = () => {
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="password">
-        <Form.Label visuallyHidden>{t('auth.password')}</Form.Label>
+        <Form.Label visuallyHidden>{t('register.password')}</Form.Label>
         <Form.Control
           type="password"
           name="password"
-          placeholder={t('auth.password')}
+          placeholder={t('register.password')}
           size="md"
           required
           onChange={formik.handleChange}
@@ -102,11 +102,11 @@ const SignUpForm = () => {
       </Form.Group>
 
       <Form.Group className="mb-4" controlId="confirmPassword">
-        <Form.Label visuallyHidden>{t('auth.confirmPassword')}</Form.Label>
+        <Form.Label visuallyHidden>{t('register.confirmPassword')}</Form.Label>
         <Form.Control
           type="password"
           name="confirmPassword"
-          placeholder={t('auth.confirmPassword')}
+          placeholder={t('register.confirmPassword')}
           size="md"
           required
           onChange={formik.handleChange}
