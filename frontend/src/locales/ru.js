@@ -24,6 +24,7 @@ export default {
       logout: 'Выйти',
       login: 'Войти',
       register: 'Зарегистрироваться',
+      channelControl: 'Управление каналом',
     },
 
     navigation: {

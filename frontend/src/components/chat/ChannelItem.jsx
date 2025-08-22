@@ -19,7 +19,7 @@ const ChannelItem = ({
 
       {channel.removable && (
         <>
-          <Dropdown.Toggle split variant={isActive ? 'secondary' : 'light'} />
+          <Dropdown.Toggle split aria-label={t('buttons.channelControl')} variant={isActive ? 'secondary' : 'light'} />
           <Dropdown.Menu>
             <Dropdown.Item onClick={onRename}>{t('buttons.rename')}</Dropdown.Item>
             <Dropdown.Divider />
