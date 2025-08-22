@@ -63,6 +63,7 @@ const RenameChannelModal = ({ onHide }) => {
           <Form.Group className="mb-3">
             <Form.Label htmlFor="name" />
             <Form.Control
+              id="name"
               name="name"
               value={formik.values.name}
               onChange={formik.handleChange}
