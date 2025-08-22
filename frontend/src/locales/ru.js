@@ -33,7 +33,7 @@ export default {
     },
 
     auth: {
-      username: 'Ваш ник',
+      username: 'Имя пользователя',
       password: 'Пароль',
       confirmPassword: 'Подтвердите пароль',
     },
