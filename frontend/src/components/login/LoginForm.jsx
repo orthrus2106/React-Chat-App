@@ -76,11 +76,11 @@ const LoginForm = () => {
               }}
             />
             <label htmlFor="password">{t('auth.password')}</label>
-            {authFailed && (
+            {authFailed && !isAuthed && (
               <div className="invalid-feedback d-block">
                 {t('errors.invalidCredentials')}
               </div>
-          )}
+            )}
           </div>
           <button type="submit" className="w-100 mb-3 btn btn-outline-primary">{t('buttons.login')}</button>
         </Form>
