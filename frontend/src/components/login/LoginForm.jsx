@@ -49,7 +49,7 @@ const LoginForm = () => {
 
   return (
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
-      {({ handleChange }) => (
+      {({ handleChange, isSubmitting }) => (
         <Form className="col-12 col-md-6 mt-3 mt-md-0">
           <h1 className="text-center mb-4">{t('buttons.login')}</h1>
           <div className="form-floating mb-3">
@@ -77,7 +77,7 @@ const LoginForm = () => {
               }}
             />
             <label htmlFor="password">{t('auth.password')}</label>
-            {authFailed && !isAuthed && (
+            {authFailed && !isAuthed && !isSubmitting &&  (
               <div className="invalid-feedback d-block">
                 {t('errors.invalidCredentials')}
               </div>
