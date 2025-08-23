@@ -32,7 +32,6 @@ const ChannelBox = () => {
 
   return isMobile ? (
     <div className="px-3 pt-3">
-      <h4 className="text-muted mb-3">{t('ui.channels')}</h4>
       <Button variant="btn" className="w-100 d-flex align-items-center gap-2" onClick={handleOpenAddModal}>
         <i className="bi bi-plus-lg" />
         {t('modals.addChannel')}
