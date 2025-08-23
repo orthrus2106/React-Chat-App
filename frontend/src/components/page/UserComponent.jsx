@@ -5,7 +5,7 @@ import { logOut } from '../../store/slices/authSlice'
 import { Dropdown } from 'react-bootstrap'
 import Avatar from './Avatar'
 
-const LogoutBtn = () => {
+const UserComponent = () => {
   const { t } = useTranslation()
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -29,4 +29,4 @@ const LogoutBtn = () => {
   )
 }
 
-export default LogoutBtn
+export default UserComponent

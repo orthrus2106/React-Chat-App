@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { useTranslation } from 'react-i18next'
 import { selectIsAuthed } from '../../store/slices/authSlice'
-import LogoutBtn from './LogoutBtn'
+import LogoutBtn from './UserComponent'
 import useAdaptive from "../../hooks/useAdaptive"
 
 const Nav = () => {
