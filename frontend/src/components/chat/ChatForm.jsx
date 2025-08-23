@@ -13,6 +13,7 @@ const ChatForm = () => {
   const [addMessage] = useAddMessageMutation()
   const currentUserName = useSelector(selectUsername)
   const onSubmit = async (value, { resetForm }) => {
+    if (value.text === '') return
     try {
       await addMessage({
         body: leoProfanity.clean(value.text),
