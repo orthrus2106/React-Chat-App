@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import LoginForm from '../components/login/LoginForm';
-import loginImage from '../assets/login-image.jpg';
-import Layout from '../components/page/Layout';
+import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import LoginForm from '../components/login/LoginForm'
+import loginImage from '../assets/login-image.jpg'
+import Layout from '../components/page/Layout'
 
 const LoginPage = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   return (
     <Layout>
       <div className="container-fluid h-100">
@@ -38,7 +38,7 @@ const LoginPage = () => {
         </div>
       </div>
     </Layout>
-  );
-};
+  )
+}
 
-export default LoginPage;
+export default LoginPage

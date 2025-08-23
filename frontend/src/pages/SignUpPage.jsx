@@ -1,10 +1,10 @@
-import { useTranslation } from 'react-i18next';
-import Layout from '../components/page/Layout';
-import signUpImage from '../assets/signup-image.jpg';
-import SignUpForm from '../components/signup/SignUpForm';
+import { useTranslation } from 'react-i18next'
+import Layout from '../components/page/Layout'
+import signUpImage from '../assets/signup-image.jpg'
+import SignUpForm from '../components/signup/SignUpForm'
 
 const SignUpPage = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   return (
     <Layout>
       <div className="container-fluid h-100">
@@ -28,7 +28,7 @@ const SignUpPage = () => {
         </div>
       </div>
     </Layout>
-  );
-};
+  )
+}
 
-export default SignUpPage;
+export default SignUpPage

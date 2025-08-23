@@ -1,54 +1,57 @@
-import { Formik } from 'formik';
-import axios from 'axios';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import { useEffect, useRef } from 'react';
-import { Form, Button } from 'react-bootstrap';
-import { logIn, selectIsAuthed } from '../../store/slices/authSlice';
-import { selectAuthFailed, setAuthFailed } from '../../store/slices/uiSlice';
-import routes from '../../api/routes';
+import { Formik } from 'formik'
+import axios from 'axios'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+import { useEffect, useRef } from 'react'
+import { Form, Button } from 'react-bootstrap'
+import { logIn, selectIsAuthed } from '../../store/slices/authSlice'
+import { selectAuthFailed, setAuthFailed } from '../../store/slices/uiSlice'
+import routes from '../../api/routes'
 
 const LoginForm = () => {
-  const { t } = useTranslation();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const isFrom = location.state?.from?.pathname || '/';
-  const dispatch = useDispatch();
-  const isAuthed = useSelector(selectIsAuthed);
-  const authFailed = useSelector(selectAuthFailed);
-  const inputRef = useRef();
+  const { t } = useTranslation()
+  const navigate = useNavigate()
+  const location = useLocation()
+  const isFrom = location.state?.from?.pathname || '/'
+  const dispatch = useDispatch()
+  const isAuthed = useSelector(selectIsAuthed)
+  const authFailed = useSelector(selectAuthFailed)
+  const inputRef = useRef()
 
   const initialValues = {
     username: '',
     password: '',
-  };
+  }
 
   const onSubmit = async (values, { setSubmitting }) => {
-    const { username, password } = values;
+    const { username, password } = values
     try {
-      const res = await axios.post(routes.loginPath(), { username, password });
-      await dispatch(logIn({ token: res.data.token, username: res.data.username }));
-      localStorage.setItem('token', res.data.token);
-      localStorage.setItem('username', res.data.username);
-      dispatch(setAuthFailed(false));
-    } catch (e) {
-      if (e.response?.status === 401) {
-        dispatch(setAuthFailed(true));
-        inputRef.current?.focus();
-      } else {
-        console.log(e);
-      }
-    } finally {
-      setSubmitting(false);
+      const res = await axios.post(routes.loginPath(), { username, password })
+      await dispatch(logIn({ token: res.data.token, username: res.data.username }))
+      localStorage.setItem('token', res.data.token)
+      localStorage.setItem('username', res.data.username)
+      dispatch(setAuthFailed(false))
     }
-  };
+    catch (e) {
+      if (e.response?.status === 401) {
+        dispatch(setAuthFailed(true))
+        inputRef.current?.focus()
+      }
+      else {
+        console.log(e)
+      }
+    }
+    finally {
+      setSubmitting(false)
+    }
+  }
 
   useEffect(() => {
     if (isAuthed) {
-      navigate(isFrom);
+      navigate(isFrom)
     }
-  }, [isAuthed, navigate, isFrom]);
+  }, [isAuthed, navigate, isFrom])
 
   return (
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
@@ -63,8 +66,8 @@ const LoginForm = () => {
               placeholder={t('auth.username')}
               value={values.username}
               onChange={(e) => {
-                dispatch(setAuthFailed(false));
-                handleChange(e);
+                dispatch(setAuthFailed(false))
+                handleChange(e)
               }}
               isInvalid={authFailed}
               required
@@ -80,8 +83,8 @@ const LoginForm = () => {
               placeholder={t('auth.password')}
               value={values.password}
               onChange={(e) => {
-                dispatch(setAuthFailed(false));
-                handleChange(e);
+                dispatch(setAuthFailed(false))
+                handleChange(e)
               }}
               isInvalid={authFailed}
               required
@@ -96,7 +99,7 @@ const LoginForm = () => {
 
           <Button
             className="w-100 mb-2"
-            variant='primary'
+            variant="primary"
             type="submit"
             disabled={isSubmitting}
           >
@@ -105,7 +108,7 @@ const LoginForm = () => {
         </Form>
       )}
     </Formik>
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default LoginForm

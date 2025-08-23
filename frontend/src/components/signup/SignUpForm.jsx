@@ -1,18 +1,18 @@
-import { useFormik } from 'formik';
-import Form from 'react-bootstrap/Form';
-import { Button } from 'react-bootstrap';
-import * as yup from 'yup';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import { logIn } from '../../store/slices/authSlice';
-import { useAddUserMutation } from '../../store/api/apiSlice';
+import { useFormik } from 'formik'
+import Form from 'react-bootstrap/Form'
+import { Button } from 'react-bootstrap'
+import * as yup from 'yup'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+import { logIn } from '../../store/slices/authSlice'
+import { useAddUserMutation } from '../../store/api/apiSlice'
 
 const SignUpForm = () => {
-  const { t } = useTranslation();
-  const [addUser, { isLoading }] = useAddUserMutation();
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { t } = useTranslation()
+  const [addUser, { isLoading }] = useAddUserMutation()
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const schema = yup.object().shape({
     username: yup
       .string()
@@ -30,7 +30,7 @@ const SignUpForm = () => {
       .string()
       .oneOf([yup.ref('password'), null], t('errors.passwordMismatch'))
       .required(t('errors.required')),
-  });
+  })
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -43,20 +43,22 @@ const SignUpForm = () => {
         const res = await addUser({
           username: value.username,
           password: value.password,
-        }).unwrap();
-        dispatch(logIn({ token: res.token, username: res.username }));
-        localStorage.setItem('token', res.token);
-        localStorage.setItem('username', res.username);
-        navigate('/');
-      } catch (e) {
+        }).unwrap()
+        dispatch(logIn({ token: res.token, username: res.username }))
+        localStorage.setItem('token', res.token)
+        localStorage.setItem('username', res.username)
+        navigate('/')
+      }
+      catch (e) {
         if (e?.status === 409) {
-          formik.setStatus(t('errors.userExists'));
-        } else {
-          console.log(e);
+          formik.setStatus(t('errors.userExists'))
+        }
+        else {
+          console.log(e)
         }
       }
     },
-  });
+  })
 
   return (
     <Form onSubmit={formik.handleSubmit}>
@@ -128,7 +130,7 @@ const SignUpForm = () => {
         {t('buttons.register')}
       </Button>
     </Form>
-  );
-};
+  )
+}
 
-export default SignUpForm;
+export default SignUpForm

@@ -65,4 +65,4 @@ export default {
       channelRemoved: 'Channel removed',
     },
   },
-};
+}

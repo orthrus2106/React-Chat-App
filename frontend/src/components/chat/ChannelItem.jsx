@@ -1,10 +1,10 @@
-import { ButtonGroup, Dropdown, Button } from 'react-bootstrap';
-import { useTranslation } from 'react-i18next';
+import { ButtonGroup, Dropdown, Button } from 'react-bootstrap'
+import { useTranslation } from 'react-i18next'
 
 const ChannelItem = ({
   channel, isActive, onSelect, onRename, onRemove,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   return (
     <Dropdown as={ButtonGroup} className="w-100">
       <Button
@@ -34,7 +34,7 @@ const ChannelItem = ({
         </>
       )}
     </Dropdown>
-  );
-};
+  )
+}
 
-export default ChannelItem;
+export default ChannelItem

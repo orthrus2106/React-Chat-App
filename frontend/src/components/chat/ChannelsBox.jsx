@@ -1,35 +1,35 @@
-import { useDispatch } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import { useEffect } from 'react';
-import { toast } from 'react-toastify';
-import useActiveChannel from '../../hooks/useActiveChannel';
-import { openModal } from '../../store/slices/uiSlice';
-import ChannelItem from './ChannelItem';
+import { useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+import { useEffect } from 'react'
+import { toast } from 'react-toastify'
+import useActiveChannel from '../../hooks/useActiveChannel'
+import { openModal } from '../../store/slices/uiSlice'
+import ChannelItem from './ChannelItem'
 
 const ChannelBox = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   const {
     channels, activeChannel, onSelectChannel, isError,
-  } = useActiveChannel();
-  const dispatch = useDispatch();
+  } = useActiveChannel()
+  const dispatch = useDispatch()
 
   const handleOpenAddModal = () => {
-    dispatch(openModal({ modalType: 'add', channelId: null }));
-  };
+    dispatch(openModal({ modalType: 'add', channelId: null }))
+  }
 
   const handleOpenRenameModal = (id) => {
-    dispatch(openModal({ modalType: 'rename', channelId: id }));
-  };
+    dispatch(openModal({ modalType: 'rename', channelId: id }))
+  }
 
   const handleOpenRemoveModal = (id) => {
-    dispatch(openModal({ modalType: 'remove', channelId: id }));
-  };
+    dispatch(openModal({ modalType: 'remove', channelId: id }))
+  }
 
   useEffect(() => {
     if (isError) {
-      toast.error(t('errors.networkError'));
+      toast.error(t('errors.networkError'))
     }
-  }, [t, isError]);
+  }, [t, isError])
 
   return (
     <div className="col-4 col-md-2 border-end px-0 bg-light flex-column h-100 d-flex">
@@ -44,7 +44,7 @@ const ChannelBox = () => {
         </button>
       </div>
       <ul id="channels-box" className="nav flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block">
-        {channels && channels.map((channel) => (
+        {channels && channels.map(channel => (
           <ChannelItem
             key={channel.id}
             channel={channel}
@@ -56,7 +56,7 @@ const ChannelBox = () => {
         ))}
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default ChannelBox;
+export default ChannelBox
