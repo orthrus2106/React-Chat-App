@@ -25,27 +25,26 @@ const LoginForm = () => {
   }
 
   const onSubmit = async (values, { setSubmitting }) => {
-    const { username, password } = values
+    const username = values.username.toLowerCase()
+    const password = values.password
+
     try {
       const res = await axios.post(routes.loginPath(), { username, password })
       await dispatch(logIn({ token: res.data.token, username: res.data.username }))
       localStorage.setItem('token', res.data.token)
       localStorage.setItem('username', res.data.username)
       dispatch(setAuthFailed(false))
-    }
-    catch (e) {
+    } catch (e) {
       if (e.response?.status === 401) {
         dispatch(setAuthFailed(true))
         inputRef.current?.focus()
-      }
-      else {
+      } else {
         console.log(e)
       }
-    }
-    finally {
+    } finally {
       setSubmitting(false)
     }
-  }
+}
 
   useEffect(() => {
     if (isAuthed) {
