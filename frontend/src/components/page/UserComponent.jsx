@@ -22,8 +22,14 @@ const UserComponent = () => {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item onClick={handleLogOut}>{t('buttons.logout')}</Dropdown.Item>
-        <Dropdown.Item>{t('buttons.changeLanguage')}</Dropdown.Item>
+        <Dropdown.Item onClick={handleLogOut} className='d-flex gap-1'>
+          <i className="bi bi-box-arrow-left"></i>{
+          t('buttons.logout')}
+        </Dropdown.Item>
+        <Dropdown.Item className='d-flex gap-1'>
+          <i className="bi bi-translate"></i>
+          {t('buttons.changeLanguage')}
+        </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   )
