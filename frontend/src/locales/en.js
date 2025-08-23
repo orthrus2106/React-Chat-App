@@ -24,7 +24,7 @@ export default {
       logout: 'Logout',
       login: 'Login',
       register: 'Register',
-      changeLanguage: 'Change language to Russian'
+      changeLanguage: 'Translate to russian'
     },
 
     navigation: {
