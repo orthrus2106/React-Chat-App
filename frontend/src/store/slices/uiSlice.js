@@ -5,6 +5,7 @@ const initialState = {
   currentChannelId: null,
   isAuthFailed: false,
   currentLanguage: 'en',
+  isCanvasOpened: false,
   modal: {
     modalType: null,
     channelId: null,
@@ -30,7 +31,10 @@ const uiSlice = createSlice({
     },
     setLanguage(state, { payload }) {
       state.currentLanguage = payload
-    }
+    },
+    setCanvas(state, { payload }) {
+      state.isCanvasOpened = payload
+    },
   },
   extraReducers: (builder) => {
     builder.addMatcher(api.endpoints.addChannel.matchFulfilled, (state, { payload }) => {
@@ -42,9 +46,10 @@ const uiSlice = createSlice({
   },
 })
 
-export const { setCurrentChannel, openModal, closeModal, setAuthFailed, setLanguage } = uiSlice.actions
+export const { setCurrentChannel, openModal, closeModal, setAuthFailed, setLanguage, setCanvas } = uiSlice.actions
 export const selectCurrentChannelId = state => state.ui.currentChannelId
 export const selectModal = state => state.ui.modal
 export const selectAuthFailed = state => state.ui.isAuthFailed
 export const selectCurrentLanguage = state => state.ui.currentLanguage
+export const selectCanvasOpened = state => state.ui.isCanvasOpened
 export default uiSlice.reducer

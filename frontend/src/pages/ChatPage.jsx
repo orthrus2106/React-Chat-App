@@ -5,22 +5,26 @@ import ChatHeader from '../components/chat/ChatHeader'
 import ChannelBox from '../components/chat/ChannelsBox'
 import Layout from '../components/page/Layout'
 import useAdaptive from '../hooks/useAdaptive'
-import { useState } from 'react'
-import { Offcanvas, Button } from 'react-bootstrap'
+import { Offcanvas } from 'react-bootstrap'
+import { useTranslation } from 'react-i18next'
+import { selectCanvasOpened, setCanvas } from '../store/slices/uiSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 const ChatPage = () => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const { t } = useTranslation()
+  const isCanvasOpened = useSelector(selectCanvasOpened)
+  const dispatch = useDispatch()
+  const handleClose = () => dispatch(setCanvas(false))
+  const handleShow = () => dispatch(setCanvas(true))
   const { isMobile } = useAdaptive()
   return (
   <Layout>
       <div className="container-lg h-100 my-0 my-lg-4 rounded rounded-lg overflow-hidden">
         <div className="row h-100 bg-white flex-md-row">
           {isMobile && (
-            <Offcanvas show={show} onHide={handleClose}>
+            <Offcanvas show={isCanvasOpened} onHide={handleClose}>
               <Offcanvas.Header closeButton>
-                <Offcanvas.Title></Offcanvas.Title>
+                <Offcanvas.Title>{t('ui.channels')}</Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <ChannelBox />
@@ -35,7 +39,7 @@ const ChatPage = () => {
             <MessagesBox />
           </div>
 
-            <div className="">
+            <div>
               <ChatForm />
             </div>
           </ChatLayout>
