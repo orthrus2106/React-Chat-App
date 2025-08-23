@@ -4,6 +4,7 @@ import api from '../api/apiSlice'
 const initialState = {
   currentChannelId: null,
   isAuthFailed: false,
+  currentLanguage: 'en',
   modal: {
     modalType: null,
     channelId: null,
@@ -27,6 +28,9 @@ const uiSlice = createSlice({
     setAuthFailed(state, { payload }) {
       state.isAuthFailed = payload
     },
+    setLanguage(state, { payload }) {
+      state.currentLanguage = payload
+    }
   },
   extraReducers: (builder) => {
     builder.addMatcher(api.endpoints.addChannel.matchFulfilled, (state, { payload }) => {
@@ -38,8 +42,9 @@ const uiSlice = createSlice({
   },
 })
 
-export const { setCurrentChannel, openModal, closeModal, setAuthFailed } = uiSlice.actions
+export const { setCurrentChannel, openModal, closeModal, setAuthFailed, setLanguage } = uiSlice.actions
 export const selectCurrentChannelId = state => state.ui.currentChannelId
 export const selectModal = state => state.ui.modal
 export const selectAuthFailed = state => state.ui.isAuthFailed
+export const selectCurrentLanguage = state => state.ui.currentLanguage
 export default uiSlice.reducer
