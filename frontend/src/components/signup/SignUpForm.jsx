@@ -1,36 +1,36 @@
-import { useFormik } from 'formik';
-import Form from 'react-bootstrap/Form';
-import { Button } from 'react-bootstrap';
-import * as yup from 'yup';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import { logIn } from '../../store/slices/authSlice';
-import { useAddUserMutation } from '../../store/api/apiSlice';
+import { useFormik } from 'formik'
+import Form from 'react-bootstrap/Form'
+import { Button } from 'react-bootstrap'
+import * as yup from 'yup'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+import { logIn } from '../../store/slices/authSlice'
+import { useAddUserMutation } from '../../store/api/apiSlice'
 
 const SignUpForm = () => {
-  const { t } = useTranslation();
-  const [addUser, { isLoading }] = useAddUserMutation();
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { t } = useTranslation()
+  const [addUser, { isLoading }] = useAddUserMutation()
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const schema = yup.object().shape({
     username: yup
       .string()
-      .min(3, t('errors.minimumLength'))
-      .max(20, t('errors.maximumLength'))
+      .min(3, t('errors.usernameLength'))
+      .max(20, t('errors.usernameLength'))
       .required(t('errors.required')),
 
     password: yup
       .string()
       .trim()
-      .min(6, t('errors.minimumLength'))
+      .min(6, t('errors.passwordMin'))
       .required(t('errors.required')),
 
     confirmPassword: yup
       .string()
       .oneOf([yup.ref('password'), null], t('errors.passwordMismatch'))
       .required(t('errors.required')),
-  });
+  })
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -43,31 +43,33 @@ const SignUpForm = () => {
         const res = await addUser({
           username: value.username,
           password: value.password,
-        }).unwrap();
-        dispatch(logIn({ token: res.token, username: res.username }));
-        localStorage.setItem('token', res.token);
-        localStorage.setItem('username', res.username);
-        navigate('/');
-      } catch (e) {
+        }).unwrap()
+        dispatch(logIn({ token: res.token, username: res.username }))
+        localStorage.setItem('token', res.token)
+        localStorage.setItem('username', res.username)
+        navigate('/')
+      }
+      catch (e) {
         if (e?.status === 409) {
-          formik.setStatus(t('errors.userExist'));
-        } else {
-          console.log(e);
+          formik.setStatus(t('errors.userExists'))
+        }
+        else {
+          console.log(e)
         }
       }
     },
-  });
+  })
 
   return (
     <Form onSubmit={formik.handleSubmit}>
       <h1 className="text-center mb-4">{t('buttons.register')}</h1>
 
       <Form.Group className="mb-3" controlId="username">
-        <Form.Label visuallyHidden>{t('auth.username')}</Form.Label>
+        <Form.Label visuallyHidden>{t('register.username')}</Form.Label>
         <Form.Control
           type="text"
           name="username"
-          placeholder={t('auth.username')}
+          placeholder={t('register.username')}
           size="md"
           autoFocus
           required
@@ -83,11 +85,11 @@ const SignUpForm = () => {
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="password">
-        <Form.Label visuallyHidden>{t('auth.password')}</Form.Label>
+        <Form.Label visuallyHidden>{t('register.password')}</Form.Label>
         <Form.Control
           type="password"
           name="password"
-          placeholder={t('auth.password')}
+          placeholder={t('register.password')}
           size="md"
           required
           onChange={formik.handleChange}
@@ -102,11 +104,11 @@ const SignUpForm = () => {
       </Form.Group>
 
       <Form.Group className="mb-4" controlId="confirmPassword">
-        <Form.Label visuallyHidden>{t('auth.confirmPassword')}</Form.Label>
+        <Form.Label visuallyHidden>{t('register.confirmPassword')}</Form.Label>
         <Form.Control
           type="password"
           name="confirmPassword"
-          placeholder={t('auth.confirmPassword')}
+          placeholder={t('register.confirmPassword')}
           size="md"
           required
           onChange={formik.handleChange}
@@ -128,7 +130,7 @@ const SignUpForm = () => {
         {t('buttons.register')}
       </Button>
     </Form>
-  );
-};
+  )
+}
 
-export default SignUpForm;
+export default SignUpForm

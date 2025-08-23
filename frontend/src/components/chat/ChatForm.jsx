@@ -1,29 +1,30 @@
-import { Formik, Form, Field } from 'formik';
-import { useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import leoProfanity from 'leo-profanity';
-import { useAddMessageMutation } from '../../store/api/apiSlice';
-import useActiveChannel from '../../hooks/useActiveChannel';
-import { selectUsername } from '../../store/slices/authSlice';
+import { Formik, Form, Field } from 'formik'
+import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+import leoProfanity from 'leo-profanity'
+import { useAddMessageMutation } from '../../store/api/apiSlice'
+import useActiveChannel from '../../hooks/useActiveChannel'
+import { selectUsername } from '../../store/slices/authSlice'
 
 const ChatForm = () => {
-  const { t } = useTranslation();
-  const { activeChannel } = useActiveChannel();
-  const initialValues = { text: '' };
-  const [addMessage] = useAddMessageMutation();
-  const currentUserName = useSelector(selectUsername);
+  const { t } = useTranslation()
+  const { activeChannel } = useActiveChannel()
+  const initialValues = { text: '' }
+  const [addMessage] = useAddMessageMutation()
+  const currentUserName = useSelector(selectUsername)
   const onSubmit = async (value, { resetForm }) => {
     try {
       await addMessage({
         body: leoProfanity.clean(value.text),
         channelId: activeChannel?.id,
         username: currentUserName,
-      });
-      resetForm();
-    } catch (e) {
-      console.log(e);
+      })
+      resetForm()
     }
-  };
+    catch (e) {
+      console.log(e)
+    }
+  }
   return (
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
       {() => (
@@ -38,7 +39,7 @@ const ChatForm = () => {
         </Form>
       )}
     </Formik>
-  );
-};
+  )
+}
 
-export default ChatForm;
+export default ChatForm

@@ -1,26 +1,26 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import routes from '../../api/routes';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import routes from '../../api/routes'
 
 const api = createApi({
   reducerPath: 'channelsApi',
   baseQuery: fetchBaseQuery({
     baseUrl: '/',
-    prepareHeaders: ((headers) => {
-      const token = localStorage.getItem('token');
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token
       if (token) {
-        headers.set('Authorization', `Bearer ${token}`);
+        headers.set('Authorization', `Bearer ${token}`)
       }
-      return headers;
-    }),
+      return headers
+    },
   }),
   tagTypes: ['Message', 'Channel'],
-  endpoints: (builder) => ({
+  endpoints: builder => ({
     getChannels: builder.query({
       query: () => routes.channelsPath(),
       providesTags: ['Channel'],
     }),
     addChannel: builder.mutation({
-      query: (name) => ({
+      query: name => ({
         url: routes.channelsPath(),
         method: 'POST',
         body: { name },
@@ -28,14 +28,14 @@ const api = createApi({
       invalidatesTags: ['Channel'],
     }),
     removeChannel: builder.mutation({
-      query: (id) => ({
+      query: id => ({
         url: `${routes.channelsPath()}/${id}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Channel'],
     }),
     renameChannel: builder.mutation({
-      query: (channel) => ({
+      query: channel => ({
         url: `${routes.channelsPath()}/${channel.id}`,
         method: 'PATCH',
         body: { name: channel.name },
@@ -47,7 +47,7 @@ const api = createApi({
       providesTags: ['Message'],
     }),
     addMessage: builder.mutation({
-      query: (message) => ({
+      query: message => ({
         url: routes.messagesPath(),
         method: 'POST',
         body: message,
@@ -55,17 +55,17 @@ const api = createApi({
       invalidatesTags: ['Message'],
     }),
     addUser: builder.mutation({
-      query: (user) => ({
+      query: user => ({
         url: routes.createNewUserPath(),
         method: 'POST',
         body: user,
       }),
     }),
   }),
-});
+})
 
 export const {
   useGetChannelsQuery, useGetMessagesQuery, useAddMessageMutation, useAddChannelMutation,
   useRenameChannelMutation, useRemoveChannelMutation, useAddUserMutation,
-} = api;
-export default api;
+} = api
+export default api

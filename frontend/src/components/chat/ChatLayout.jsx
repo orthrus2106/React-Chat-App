@@ -4,6 +4,6 @@ const ChatLayout = ({ children }) => (
       {children}
     </div>
   </div>
-);
+)
 
-export default ChatLayout;
+export default ChatLayout

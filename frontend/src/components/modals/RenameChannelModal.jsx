@@ -1,34 +1,34 @@
-import { useEffect, useRef } from 'react';
-import { useFormik } from 'formik';
-import * as yup from 'yup';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Modal from 'react-bootstrap/Modal';
-import { useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import { toast } from 'react-toastify';
-import leoProfanity from 'leo-profanity';
-import { selectModal } from '../../store/slices/uiSlice';
-import useActiveChannel from '../../hooks/useActiveChannel';
-import { useRenameChannelMutation } from '../../store/api/apiSlice';
+import { useEffect, useRef } from 'react'
+import { useFormik } from 'formik'
+import * as yup from 'yup'
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
+import Modal from 'react-bootstrap/Modal'
+import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+import { toast } from 'react-toastify'
+import leoProfanity from 'leo-profanity'
+import { selectModal } from '../../store/slices/uiSlice'
+import useActiveChannel from '../../hooks/useActiveChannel'
+import { useRenameChannelMutation } from '../../store/api/apiSlice'
 
 const RenameChannelModal = ({ onHide }) => {
-  const { t } = useTranslation();
-  const inputRef = useRef();
-  const { channels } = useActiveChannel();
-  const modal = useSelector(selectModal);
-  const { channelId } = modal;
-  const usedNames = channels.map((channel) => channel.name.trim().toLowerCase());
-  const [renameChannel, { isLoading }] = useRenameChannelMutation();
+  const { t } = useTranslation()
+  const inputRef = useRef()
+  const { channels } = useActiveChannel()
+  const modal = useSelector(selectModal)
+  const { channelId } = modal
+  const usedNames = channels.map(channel => channel.name.trim().toLowerCase())
+  const [renameChannel, { isLoading }] = useRenameChannelMutation()
   const schema = yup.object().shape({
     name: yup
       .string()
       .trim()
-      .min(3, t('errors.minimumLength'))
-      .max(20, t('errors.maximumLength'))
+      .min(3, t('errors.usernameLength'))
+      .max(20, t('errors.usernameLength'))
       .notOneOf(usedNames, t('errors.channelExists'))
       .required(t('errors.required')),
-  });
+  })
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -36,21 +36,23 @@ const RenameChannelModal = ({ onHide }) => {
     validationSchema: schema,
     onSubmit: async (value, { resetForm, setSubmitting }) => {
       try {
-        await renameChannel({ id: channelId, name: leoProfanity.clean(value.name) }).unwrap();
-        resetForm();
-        toast.success(t('notifications.channelRenamed'));
-        onHide();
-      } catch (e) {
-        console.log(e);
-      } finally {
-        setSubmitting(false);
+        await renameChannel({ id: channelId, name: leoProfanity.clean(value.name) }).unwrap()
+        resetForm()
+        toast.success(t('notifications.channelRenamed'))
+        onHide()
+      }
+      catch (e) {
+        console.log(e)
+      }
+      finally {
+        setSubmitting(false)
       }
     },
-  });
+  })
 
   useEffect(() => {
-    inputRef.current.focus();
-  }, []);
+    inputRef.current.focus()
+  }, [])
 
   return (
     <Modal show onHide={onHide}>
@@ -61,8 +63,9 @@ const RenameChannelModal = ({ onHide }) => {
 
         <Modal.Body>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="name" />
+            <Form.Label htmlFor="name">{t('modals.enterChannelName')}</Form.Label>
             <Form.Control
+              id="name"
               name="name"
               value={formik.values.name}
               onChange={formik.handleChange}
@@ -88,7 +91,7 @@ const RenameChannelModal = ({ onHide }) => {
         </Modal.Footer>
       </Form>
     </Modal>
-  );
-};
+  )
+}
 
-export default RenameChannelModal;
+export default RenameChannelModal

@@ -1,7 +1,7 @@
 export default {
   translation: {
     errors: {
-      userExists: 'Имя пользователя уже существует',
+      userExists: 'Такой пользователь уже существует',
       channelExists: 'Имя канала уже существует',
       addChannelFailed: 'Канал не был добавлен, попробуйте позже',
       messageSendFailed: 'Сообщение не было отправлено, попробуйте позже',
@@ -24,12 +24,19 @@ export default {
       logout: 'Выйти',
       login: 'Войти',
       register: 'Зарегистрироваться',
+      channelControl: 'Управление каналом',
     },
 
     navigation: {
       notFound: 'Страница не найдена',
       redirect: 'Но вы можете перейти',
       mainPage: 'на главную страницу',
+    },
+
+    register: {
+      username: 'Имя пользователя',
+      password: 'Пароль',
+      confirmPassword: 'Подтвердите пароль',
     },
 
     auth: {
@@ -57,6 +64,7 @@ export default {
       messages: 'сообщений',
       appName: 'Hexlet Chat',
       noAccount: 'Нет аккаунта?',
+      uiRegister: 'Регистрация',
       plus: '+',
     },
 
@@ -66,4 +74,4 @@ export default {
       channelRemoved: 'Канал удалён',
     },
   },
-};
+}

@@ -1,9 +1,9 @@
-import ChatLayout from '../components/chat/ChatLayout';
-import ChatForm from '../components/chat/ChatForm';
-import MessagesBox from '../components/chat/MessagesBox';
-import ChatHeader from '../components/chat/ChatHeader';
-import ChannelBox from '../components/chat/ChannelsBox';
-import Layout from '../components/page/Layout';
+import ChatLayout from '../components/chat/ChatLayout'
+import ChatForm from '../components/chat/ChatForm'
+import MessagesBox from '../components/chat/MessagesBox'
+import ChatHeader from '../components/chat/ChatHeader'
+import ChannelBox from '../components/chat/ChannelsBox'
+import Layout from '../components/page/Layout'
 
 const ChatPage = () => (
   <Layout>
@@ -24,6 +24,6 @@ const ChatPage = () => (
       </div>
     </div>
   </Layout>
-);
+)
 
-export default ChatPage;
+export default ChatPage

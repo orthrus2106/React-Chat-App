@@ -1,10 +1,10 @@
-import { ButtonGroup, Dropdown, Button } from 'react-bootstrap';
-import { useTranslation } from 'react-i18next';
+import { ButtonGroup, Dropdown, Button } from 'react-bootstrap'
+import { useTranslation } from 'react-i18next'
 
 const ChannelItem = ({
   channel, isActive, onSelect, onRename, onRemove,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   return (
     <Dropdown as={ButtonGroup} className="w-100">
       <Button
@@ -19,7 +19,13 @@ const ChannelItem = ({
 
       {channel.removable && (
         <>
-          <Dropdown.Toggle split variant={isActive ? 'secondary' : 'light'} />
+          <Dropdown.Toggle
+            split
+            aria-label={t('buttons.channelControl')}
+            variant={isActive ? 'secondary' : 'light'}
+          >
+            <span className="visually-hidden">{t('buttons.channelControl')}</span>
+          </Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item onClick={onRename}>{t('buttons.rename')}</Dropdown.Item>
             <Dropdown.Divider />
@@ -28,7 +34,7 @@ const ChannelItem = ({
         </>
       )}
     </Dropdown>
-  );
-};
+  )
+}
 
-export default ChannelItem;
+export default ChannelItem

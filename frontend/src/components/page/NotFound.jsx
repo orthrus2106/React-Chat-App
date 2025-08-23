@@ -1,8 +1,8 @@
-import { useTranslation } from 'react-i18next';
-import notFoundImage from '../../assets/not-found-page.svg';
+import { useTranslation } from 'react-i18next'
+import notFoundImage from '../../assets/not-found-page.svg'
 
 const NotFound = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   return (
     <div className="text-center">
       <img
@@ -20,7 +20,7 @@ const NotFound = () => {
         </a>
       </p>
     </div>
-  );
-};
+  )
+}
 
-export default NotFound;
+export default NotFound
