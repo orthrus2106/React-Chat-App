@@ -23,7 +23,7 @@ const LogoutBtn = () => {
 
       <Dropdown.Menu>
         <Dropdown.Item onClick={handleLogOut}>{t('buttons.logout')}</Dropdown.Item>
-        <Dropdown.Item>Another action</Dropdown.Item>
+        <Dropdown.Item>{t('buttons.changeLanguage')}</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   )

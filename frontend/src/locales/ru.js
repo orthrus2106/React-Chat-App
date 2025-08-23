@@ -25,6 +25,7 @@ export default {
       login: 'Войти',
       register: 'Зарегистрироваться',
       channelControl: 'Управление каналом',
+      changeLanguage: 'Изменить язык на английский'
     },
 
     navigation: {
