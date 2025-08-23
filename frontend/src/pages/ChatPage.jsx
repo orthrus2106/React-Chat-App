@@ -4,26 +4,45 @@ import MessagesBox from '../components/chat/MessagesBox'
 import ChatHeader from '../components/chat/ChatHeader'
 import ChannelBox from '../components/chat/ChannelsBox'
 import Layout from '../components/page/Layout'
+import useAdaptive from '../hooks/useAdaptive'
+import { useState } from 'react'
+import { Offcanvas, Button } from 'react-bootstrap'
 
-const ChatPage = () => (
+const ChatPage = () => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const { isMobile } = useAdaptive()
+  return (
   <Layout>
-    <div className="container h-100 my-4 overflow-hidden rounded shadow">
-      <div className="row h-100 bg-white flex-md-row">
-        <ChannelBox />
-        <ChatLayout>
-          <ChatHeader />
+      <div className="container-lg h-100 my-0 my-lg-4 rounded rounded-lg overflow-hidden">
+        <div className="row h-100 bg-white flex-md-row">
+          {isMobile && (
+            <Offcanvas show={show} onHide={handleClose}>
+              <Offcanvas.Header closeButton>
+                <Offcanvas.Title></Offcanvas.Title>
+              </Offcanvas.Header>
+              <Offcanvas.Body>
+                <ChannelBox />
+              </Offcanvas.Body>
+            </Offcanvas>
+          )}
+          {!isMobile && <ChannelBox />}
+          <ChatLayout>
+            <ChatHeader onBurgerClick={handleShow}/>
 
-          <div className="overflow-auto px-5 mb-3" style={{ flexGrow: 1 }}>
+          <div className="flex-grow-1 overflow-auto px-0 px-md-5 mt-xl-2">
             <MessagesBox />
           </div>
 
-          <div className="px-5 py-3">
-            <ChatForm />
-          </div>
-        </ChatLayout>
+            <div className="">
+              <ChatForm />
+            </div>
+          </ChatLayout>
+        </div>
       </div>
-    </div>
-  </Layout>
+    </Layout>
 )
+}
 
 export default ChatPage
