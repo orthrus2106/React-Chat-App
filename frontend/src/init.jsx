@@ -9,7 +9,7 @@ import store from './store/index.js'
 import socketInit from './services/socketService.js'
 import App from './App.jsx'
 import rollBarConfig from './rollbar.js'
-import LanguageController from './components/page/LanguageController.jsx';
+import LanguageController from './components/utils/LanguageController.jsx';
 import { initI18n } from './i18n.js'
 import i18n from './i18n.js';
 

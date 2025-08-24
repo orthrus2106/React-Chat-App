@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import Layout from '../components/page/Layout'
+import Layout from '../components/utils/Layout'
 import signUpImage from '../assets/signup-image.jpg'
 import SignUpForm from '../components/signup/SignUpForm'
 

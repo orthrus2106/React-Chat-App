@@ -3,7 +3,7 @@ import LoginPage from './pages/LoginPage'
 import SignUpPage from './pages/SignUpPage'
 import NotFoundPage from './pages/NotFoundPage'
 import ChatPage from './pages/ChatPage'
-import AuthRequired from './components/page/AuthRequired'
+import AuthRequired from './components/utils/AuthRequired'
 import ModalRoot from './components/modals/ModalRoot'
 
 const App = () => (

@@ -1,4 +1,4 @@
-import Avatar from "../page/Avatar";
+import Avatar from "../utils/Avatar";
 
 const Message = ({ author, body }) => {
   const currentUsername = localStorage.getItem('username')
