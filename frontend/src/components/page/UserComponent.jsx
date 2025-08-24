@@ -1,11 +1,13 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { logOut } from '../../store/slices/authSlice'
 import { Dropdown } from 'react-bootstrap'
 import Avatar from './Avatar'
+import { selectCurrentLanguage, setLanguage } from '../../store/slices/uiSlice'
 
 const UserComponent = () => {
+  const currentLanguage = useSelector(selectCurrentLanguage)
   const { t } = useTranslation()
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -13,6 +15,14 @@ const UserComponent = () => {
   const handleLogOut = () => {
     dispatch(logOut())
     navigate('/login')
+  }
+
+  const handleSwitchLanguage = () => {
+    if (currentLanguage === 'en') {
+      dispatch(setLanguage('ru'))
+    } else {
+      dispatch(setLanguage('en'))
+    }
   }
 
   return (
@@ -26,7 +36,7 @@ const UserComponent = () => {
           <i className="bi bi-box-arrow-left"></i>{
           t('buttons.logout')}
         </Dropdown.Item>
-        <Dropdown.Item className='d-flex gap-1'>
+        <Dropdown.Item className='d-flex gap-1' onClick={handleSwitchLanguage}>
           <i className="bi bi-translate"></i>
           {t('buttons.changeLanguage')}
         </Dropdown.Item>

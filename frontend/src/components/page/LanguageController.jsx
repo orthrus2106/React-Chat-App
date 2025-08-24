@@ -1,16 +1,16 @@
-import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { selectCurrentLanguage } from '../../store/slices/uiSlice';
-import i18n from '../../init';
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import i18n from '../../i18n.js'
+import { selectCurrentLanguage } from '../../store/slices/uiSlice'
 
 const LanguageController = () => {
-  const currentLanguage = useSelector(selectCurrentLanguage);
+  const currentLanguage = useSelector(selectCurrentLanguage)
 
   useEffect(() => {
-    i18n.changeLanguage(currentLanguage);
-  }, [currentLanguage]);
+    i18n.changeLanguage(currentLanguage)
+  }, [currentLanguage])
 
-  return null;
-};
+  return null
+}
 
-export default LanguageController;
+export default LanguageController

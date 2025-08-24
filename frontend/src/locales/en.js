@@ -1,19 +1,19 @@
 export default {
   translation: {
     errors: {
-      userExists: 'Username already exists',
+      userExists: 'This user already exists',
       channelExists: 'Channel name already exists',
-      addChannelFailed: 'Channel was not added, please try again later',
-      messageSendFailed: 'Message was not sent, please try again later',
-      invalidCredentials: 'Invalid username or password',
+      addChannelFailed: 'The channel was not added, please try again later',
+      messageSendFailed: 'The message was not sent, please try again later',
+      invalidCredentials: 'Incorrect username or password',
       required: 'Required field',
       usernameLength: 'From 3 to 20 characters',
       minimumLength: 'Minimum 3 characters',
       maximumLength: 'Maximum 20 characters',
       passwordMin: 'At least 6 characters',
       passwordMismatch: 'Passwords must match',
-      channelCreateError: 'Failed to create channel',
-      networkError: 'Error loading data',
+      channelCreateError: 'Error creating the channel',
+      networkError: 'Connection error',
     },
 
     buttons: {
@@ -24,7 +24,8 @@ export default {
       logout: 'Logout',
       login: 'Login',
       register: 'Register',
-      changeLanguage: 'Translate to russian'
+      channelControl: 'Channel management',
+      changeLanguage: 'Switch to Russian'
     },
 
     navigation: {
@@ -33,15 +34,21 @@ export default {
       mainPage: 'to the main page',
     },
 
-    auth: {
+    register: {
       username: 'Username',
+      password: 'Password',
+      confirmPassword: 'Confirm password',
+    },
+
+    auth: {
+      username: 'Your username',
       password: 'Password',
       confirmPassword: 'Confirm password',
     },
 
     modals: {
       addChannel: 'Add channel',
-      enterChannelName: 'Enter channel name',
+      enterChannelName: 'Channel name',
       sampleChannelName: 'For example, my team',
       removeChannel: 'Remove channel',
       areYouSure: 'Are you sure?',
@@ -50,7 +57,7 @@ export default {
 
     chat: {
       newMessage: 'New message',
-      enterMessage: 'Enter your message',
+      enterMessage: 'Enter a message',
     },
 
     ui: {
@@ -58,6 +65,8 @@ export default {
       messages: 'messages',
       appName: 'Hexlet Chat',
       noAccount: 'No account?',
+      uiRegister: 'Register',
+      plus: '+',
     },
 
     notifications: {
