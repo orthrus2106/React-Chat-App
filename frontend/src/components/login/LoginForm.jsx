@@ -34,17 +34,20 @@ const LoginForm = () => {
       localStorage.setItem('token', res.data.token)
       localStorage.setItem('username', res.data.username)
       dispatch(setAuthFailed(false))
-    } catch (e) {
+    }
+    catch (e) {
       if (e.response?.status === 401) {
         dispatch(setAuthFailed(true))
         inputRef.current?.focus()
-      } else {
+      }
+      else {
         console.log(e)
       }
-    } finally {
+    }
+    finally {
       setSubmitting(false)
     }
-}
+  }
 
   useEffect(() => {
     if (isAuthed) {

@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'bootstrap-icons/font/bootstrap-icons.css'
 import { I18nextProvider } from 'react-i18next'
 import { Provider } from 'react-redux'
 import { ToastContainer } from 'react-toastify'
@@ -9,9 +9,9 @@ import store from './store/index.js'
 import socketInit from './services/socketService.js'
 import App from './App.jsx'
 import rollBarConfig from './rollbar.js'
-import LanguageController from './components/utils/LanguageController.jsx';
+import LanguageController from './components/utils/LanguageController.jsx'
 import { initI18n } from './i18n.js'
-import i18n from './i18n.js';
+import i18n from './i18n.js'
 
 const init = async () => {
   await initI18n()

@@ -18,7 +18,7 @@ const ChatPage = () => {
   const handleShow = () => dispatch(setCanvas(true))
   const { isMobile } = useAdaptive()
   return (
-  <Layout>
+    <Layout>
       <div className="container-lg h-100 my-0 my-lg-4 rounded rounded-lg overflow-hidden">
         <div className="row h-100 bg-white flex-md-row">
           {isMobile && (
@@ -33,11 +33,11 @@ const ChatPage = () => {
           )}
           {!isMobile && <ChannelBox />}
           <ChatLayout>
-            <ChatHeader onBurgerClick={handleShow}/>
+            <ChatHeader onBurgerClick={handleShow} />
 
-          <div className="flex-grow-1 overflow-auto px-0 px-md-5 mt-xl-2">
-            <MessagesBox />
-          </div>
+            <div className="flex-grow-1 overflow-auto px-0 px-md-5 mt-xl-2">
+              <MessagesBox />
+            </div>
 
             <div>
               <ChatForm />
@@ -46,7 +46,7 @@ const ChatPage = () => {
         </div>
       </div>
     </Layout>
-)
+  )
 }
 
 export default ChatPage

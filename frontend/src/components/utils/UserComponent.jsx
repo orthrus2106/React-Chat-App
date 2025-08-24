@@ -20,23 +20,26 @@ const UserComponent = () => {
   const handleSwitchLanguage = () => {
     if (currentLanguage === 'en') {
       dispatch(setLanguage('ru'))
-    } else {
+    }
+    else {
       dispatch(setLanguage('en'))
     }
   }
 
   return (
     <Dropdown>
-      <Dropdown.Toggle as='div'>
+      <Dropdown.Toggle as="div">
         <Avatar />
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item onClick={handleLogOut} className='d-flex gap-1'>
-          <i className="bi bi-box-arrow-left"></i>{
-          t('buttons.logout')}
+        <Dropdown.Item onClick={handleLogOut} className="d-flex gap-1">
+          <i className="bi bi-box-arrow-left"></i>
+          {
+            t('buttons.logout')
+          }
         </Dropdown.Item>
-        <Dropdown.Item className='d-flex gap-1' onClick={handleSwitchLanguage}>
+        <Dropdown.Item className="d-flex gap-1" onClick={handleSwitchLanguage}>
           <i className="bi bi-translate"></i>
           {t('buttons.changeLanguage')}
         </Dropdown.Item>

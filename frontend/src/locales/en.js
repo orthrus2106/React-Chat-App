@@ -25,7 +25,7 @@ export default {
       login: 'Login',
       register: 'Register',
       channelControl: 'Channel management',
-      changeLanguage: 'Switch to Russian'
+      changeLanguage: 'Switch to Russian',
     },
 
     navigation: {

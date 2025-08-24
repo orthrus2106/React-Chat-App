@@ -12,7 +12,7 @@ const MessagesBox = () => {
   const { data: messages = [], isError } = useGetMessagesQuery()
   const filteredMessages = messages?.filter(message => message.channelId === activeChannel?.id)
   useEffect(() => {
-    lastMessageRef.current?.scrollIntoView({ behavior: 'smooth' });
+    lastMessageRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [filteredMessages])
   useEffect(() => {
     if (isError) {
@@ -28,7 +28,7 @@ const MessagesBox = () => {
           body={message.body}
         />
       ))}
-      <div ref={lastMessageRef}/>
+      <div ref={lastMessageRef} />
     </div>
   )
 }

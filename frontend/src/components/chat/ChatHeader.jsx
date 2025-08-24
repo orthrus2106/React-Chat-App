@@ -13,13 +13,16 @@ const ChatHeader = ({ onBurgerClick }) => {
     <div className="py-2 border-bottom d-flex justify-content-between align-items-center">
       <div>
         <h6 className="m-0 fw-bold">
-          #{activeChannel?.name}
+          #
+          {activeChannel?.name}
         </h6>
         <small className="text-muted">
-          {messagesCount} {t('ui.messages')}
+          {messagesCount}
+          {' '}
+          {t('ui.messages')}
         </small>
       </div>
-     {isMobile && (
+      {isMobile && (
         <button
           type="button"
           onClick={onBurgerClick}
@@ -29,7 +32,7 @@ const ChatHeader = ({ onBurgerClick }) => {
           <i className="bi bi-list fs-1 text-secondary" />
         </button>
       )}
-  </div>
+    </div>
   )
 }
 

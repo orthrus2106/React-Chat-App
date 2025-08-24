@@ -1,9 +1,9 @@
-import { useMediaQuery } from 'react-responsive';
+import { useMediaQuery } from 'react-responsive'
 
 const useAdaptive = () => {
-  const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 500px)' })
 
-  return { isMobile };
-};
+  return { isMobile }
+}
 
-export default useAdaptive;
+export default useAdaptive
