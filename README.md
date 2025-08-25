@@ -29,6 +29,18 @@ A simple real-time chat application built with modern technologies.
 - Formik and Yup
 - Rollbar (error tracking)
 
+## How to run locally
+
+```bash
+git clone https://github.com/orthrus2106/React-Chat-App.git
+make install
+make develop
+```
+
+## Live demo
+
+[https://hexlet-chat-zslk.onrender.com](https://hexlet-chat-zslk.onrender.com)
+
 ## Screenshots
 
 ### 🖥️ Desktop
@@ -61,12 +73,3 @@ A simple real-time chat application built with modern technologies.
 <p align="center">
   <img src="images/login_mobile.png" width="300">
 </p>
-
-
-## How to run locally
-
-```bash
-git clone https://github.com/orthrus2106/React-Chat-App.git
-make install
-make develop
-```
