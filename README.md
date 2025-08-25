@@ -29,18 +29,40 @@ A simple real-time chat application built with modern technologies.
 - Formik and Yup
 - Rollbar (error tracking)
 
-## Demo
+## Screenshots
 
-***Main page Desktop:***
-![Screenshot 1](images/main_page_desktop.png)
-***Creating channel Desktop:***
-![Screenshot 2](images/create_channel_desktop.png)
-***Main page Mobile:***
-![Screenshot 3](images/main_page_mobile.png)
-***Channel management Mobile:***
-![Screenshot 4](images/create_channel_mobile.png)
-***Login page Mobile:***
-![Screenshot 5](images/login_mobile.png)
+### 🖥️ Desktop
+
+**Main page**
+<p align="center">
+  <img src="images/main_page_desktop.png" width="600">
+</p>
+
+**Creating channel**
+<p align="center">
+  <img src="images/create_channel_desktop.png" width="600">
+</p>
+
+---
+
+### 📱 Mobile
+
+**Main page**
+<p align="center">
+  <img src="images/main_page_mobile.png" width="300">
+</p>
+
+**Channel management**
+<p align="center">
+  <img src="images/create_channel_mobile.png" width="300">
+</p>
+
+**Login page**
+<p align="center">
+  <img src="images/login_mobile.png" width="300">
+</p>
+
+
 ## How to run locally
 
 ```bash
